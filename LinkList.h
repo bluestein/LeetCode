@@ -6,6 +6,14 @@ struct ListNode {
 	ListNode(int x) : val(x), next(NULL) {}
 };
 
+// Definition for a binary tree node.
+struct TreeNode {
+	int val;
+	TreeNode *left;
+	TreeNode *right;
+	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
 class LinkList
 {
 public:
@@ -23,5 +31,10 @@ public:
 	ListNode* mergeTwoLists1(ListNode* l1, ListNode* l2); // #21
 	ListNode* mergeTwoLists2(ListNode* l1, ListNode* l2); // #21
 	void deleteNode(ListNode* node); // #237
+	bool isPalindrome(ListNode* head); // #234
+	ListNode *getIntersectionNode(ListNode *headA, ListNode *headB); // #160
+	ListNode* sortList1(ListNode* head); // #148
+	ListNode* sortList2(ListNode* head); // #148
+	TreeNode* sortedListToBST(ListNode* head); // #109
 };
 

@@ -43,6 +43,61 @@
 
 	> generate a list in length of len
 
+
+*Update 2016-3-3*
+
+1. bool isPalindrome(ListNode \*head); // #234
+
+	> Given a singly linked list, determine if it is a palindrome(回文).
+
+2. ListNode \*getIntersectionNode(ListNode \*headA, ListNode \*headB); // # 160
+
+	> We set 2 pointers "curA" and "curB" to point to linked-list headA and headB. Then set the
+	```
+		[#length of linked-list headA]=L1
+		[#length of linked-list headB]=L2
+		 assuming that L1<L2
+	```
+	so, the curA will first move the tail of the headA, we have moved step T=L1
+	by setting the curA to headB we move the curA and the curB at the same time
+	```
+       [#distance-from-curB-to-tail]=L2-L1
+	```
+	when we move the curB to the tail of the headB then we set the curB to the headA, at the same time,
+	```
+        [#distance-from-headB-to-curA]=L2-L1
+	```
+	So we have the
+	```
+        [#distance-from-curB-to-meet-point] ==  [#distance-from-curA-to-meet-point]
+	```
+	We just move the curA and curB at the same time, then we get the meeting point .
+	Thanks to [RainbowSecret](https://leetcode.com/discuss/77946/recommend-beginners-implementation-detailed-explaination)
+
+3. ListNode* sortList1(ListNode* head); ListNode* sortList2(ListNode* head) // #148
+
+	> Sort a linked list in O(n log n) time using constant space complexity.
+
+4. TreeNode* LinkList::sortedListToBST(ListNode* head) // #109
+
+	> Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST(Binary Search Tree).
+
+#Array
+
+
+*Update 2016-3-3*
+
+1. void moveZeroes(vector<int>& nums); // #283
+
+	> Given an array nums, write a function to move all 0's to the end of it
+	> while maintaining the relative order of the non-zero elements.
+
+2. int removeElement(arr& nums, int val); // #27
+
+	> Given an array and a value, remove all instances of that value in place and return the new length.
+	> The order of elements can be changed.It doesn't matter what you leave beyond the new length(超出新长度的元素可以任意).
+
+
 # Math
 
 1. bool isPowerOfThree(int n); // #326
