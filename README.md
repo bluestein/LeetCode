@@ -1,6 +1,8 @@
-##Linked List
+#LeetCode
 
-**For detail, see .h  and .cpp file**
+The following is classified according to its tag. For example,  [problem \#328](https://leetcode.com/problems/odd-even-linked-list/), its tag is "Linked List". **For detail, see .h  and .cpp file**.
+
+##Linked List (LinkList.h & LinkList.cpp)
 
 - \#328 ListNode\* oddEvenList(ListNode\* head) 
 
@@ -24,7 +26,7 @@
 
 - \#109 TreeNode* LinkList::sortedListToBST(ListNode* head)
 
-#Array
+#Array  (Array.h & Array.cpp)
 
 
 *Update 2016-3-3*
@@ -34,6 +36,6 @@
 - \#27 int removeElement(arr& nums, int val)
 
 
-# Math
+# Math  (Math.h & Math.cpp)
 
 - \#326 bool isPowerOfThree(int n)
