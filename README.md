@@ -1,6 +1,6 @@
 #LeetCode
 
-The following is classified according to its tag, namely, [Linked List][tag-list], [Array][tag-array], and [Math][tag-math]. For example,  [problem \#328][problem-328], its tag is "Linked List". **For detail, see .h  and .cpp file, or [Some Explanation](#Some-Explanation)**.
+The following is classified according to its tag, namely, [Linked List][tag-list], [Array][tag-array], and [Math][tag-math]. For example,  [problem \#328][problem-328], its tag is "Linked List". ** For detail, see .h  and .cpp file, or [Some Explanation][explanation] **.
 
 ##Linked List 
 
@@ -73,8 +73,9 @@ So we have the
 We just move the curA and curB at the same time, then we get the meeting point .
 Thanks to [RainbowSecret][rainbowSecret].
 
-[tag-list]: #Linked-List
-[tag-array]: #Array
-[tag-math]: #Math
+[tag-list]: #linked-list
+[tag-array]: #array
+[tag-math]: #math
+[explanation]: #some-explanation
 [problem-328]: https://leetcode.com/problems/odd-even-linked-list/
 [rainbowSecret]: https://leetcode.com/discuss/77946/recommend-beginners-implementation-detailed-explaination
