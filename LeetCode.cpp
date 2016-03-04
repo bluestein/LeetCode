@@ -17,7 +17,8 @@ void test();
 
 int main()
 {
-	array_test();
+	//array_test();
+	math_test();
     return 0;
 }
 
@@ -35,6 +36,10 @@ void math_test() {
 	Math math;
 	cout << "Power of three" << endl;
 	cout << math.isPowerOfThree(243) << endl;
+
+	cout << math.isPowerOfTwo(8) << endl;
+
+	cout << math.hammingWeight(3) << endl;
 }
 
 void test() {

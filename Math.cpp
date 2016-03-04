@@ -12,6 +12,20 @@ Math::~Math()
 {
 }
 
+// Number of 1 Bits
+int Math::hammingWeight(uint32_t n) {
+	int count = 0;
+	while (n) {
+		n = n & (n - 1);
+		count++;
+	}
+	return count;
+}
+
+bool Math::isPowerOfTwo(int n) {
+	return n > 0 && !(n & (n - 1));
+}
+
 // 给定一个整数，判定它是否为3的乘方。提升：不用任何循环和递归
 // 算法：
 // 1. 3^19 = 1162261467, 32系统下 3^20 大于 int；
