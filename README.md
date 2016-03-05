@@ -1,10 +1,10 @@
 #LeetCode
 
-The following is classified according to its tag, namely, [Linked List][tag-list], [Array][tag-array], and [Math][tag-math]. For example,  [problem \#328][problem-328], its tag is "Linked List". ** For detail, see .h  and .cpp file, or [Some Explanation][explanation] **.
+The following is classified according to its tag, namely, [Linked List][tag-list], [Array][tag-array], and [Math][tag-math]. For example,  [problem \#328][problem-328], its tag is "Linked List". **For detail, see .h  and .cpp file, or [Some Explanation][explanation]**.
 
 ##Linked List 
 
-Source File: LinkList.h & LinkList.cpp
+**Source File: LinkList.h & LinkList.cpp**
 
 - \#328 ListNode\* oddEvenList(ListNode\* head) 
 - \#206 ListNode\* reverseList(ListNode\* head)
@@ -22,17 +22,28 @@ Source File: LinkList.h & LinkList.cpp
 
 ##Array
 
-Source File: Array.h & Array.cpp
+**Source File: Array.h & Array.cpp**
 
-*Update 2016-3-3*
+*Update 2016-3-5*
 
 - \#283 void moveZeroes(vector<int>& nums)
 - \#27 int removeElement(arr& nums, int val)
+- \#243 int shortestDistance(vector<string>& words, string word1, string word2); 
+- \#219 bool containsNearbyDuplicate2(vector<int>& nums, int k); 
+- \#219 bool containsNearbyDuplicate1(vector<int>& nums, int k); 
+- \#169 int majorityElement(vector<int>& nums); 
+- \#119 vector<int> getPascalsRow(int rowIndex); 
+- \#118 vector<vector<int>> generatePascals(int numRows);
+- \#189 void rotate4(vector<int>& nums, int k); 
+- \#189 void rotate3(vector<int>& nums, int k); 
+- \#189 void rotate2(vector<int>& nums, int k); 
+- \#189 void rotate1(vector<int>& nums, int k); 
+- \#217 bool containsDuplicate(vector<int>& nums);
 
 
 ##Math
 
-Source File: Math.h & Math.cpp
+**Source File: Math.h & Math.cpp**
 
 - \#326 bool isPowerOfThree(int n)
 

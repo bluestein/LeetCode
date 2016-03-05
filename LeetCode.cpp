@@ -17,12 +17,13 @@ void test();
 
 int main()
 {
-	//array_test();
-	math_test();
+	array_test();
+	//math_test();
     return 0;
 }
 
-void array_test() {
+void array_test() 
+{
 	Array array;
 	Array::arr vec = array.genVector(11);
 	array.printVector(vec);
@@ -30,9 +31,18 @@ void array_test() {
 	array.printVector(vec);
 	array.moveZeroes(vec);
 	array.printVector(vec);
+
+	int nums_arr[] = { 1,2,2,2,1 };
+	Array::arr nums(nums_arr, nums_arr + 5);
+	cout << array.majorityElement(nums) << endl;
+
+	string words_arr[] = { "practice", "makes", "perfect", "coding", "makes" };
+	vector<string> words(words_arr, words_arr + 5);
+	cout << array.shortestDistance(words, "coding", "makes") << endl;
 }
 
-void math_test() {
+void math_test() 
+{
 	Math math;
 	cout << "Power of three" << endl;
 	cout << math.isPowerOfThree(243) << endl;
@@ -42,11 +52,13 @@ void math_test() {
 	cout << math.hammingWeight(3) << endl;
 }
 
-void test() {
+void test() 
+{
 	Test test;
 }
 
-void list_test() {
+void list_test() 
+{
 
 	LinkList list;
 	ListNode *head = list.genList(10);
