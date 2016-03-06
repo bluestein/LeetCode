@@ -15,10 +15,11 @@ The following is classified according to its tag, namely, [Linked List][tag-list
 
 *Update 2016-3-3*
 
-- \#234 bool isPalindrome(ListNode \*head)
-- \#160 ListNode \*getIntersectionNode(ListNode \*headA, ListNode \*headB)
-- \#148 ListNode* sortList1(ListNode* head); ListNode* sortList2(ListNode* head)
-- \#109 TreeNode* LinkList::sortedListToBST(ListNode* head)
+- \#234 bool isPalindrome(ListNode\* head)
+- \#160 ListNode\* getIntersectionNode(ListNode\* headA, ListNode\* headB)
+- \#148 ListNode\* sortList1(ListNode\* head)
+- \#148 ListNode\* sortList2(ListNode\* head)
+- \#109 TreeNode\* LinkList::sortedListToBST(ListNode\* head)
 
 ##Array
 
@@ -28,17 +29,22 @@ The following is classified according to its tag, namely, [Linked List][tag-list
 
 - \#283 void moveZeroes(vector<int>& nums)
 - \#27 int removeElement(arr& nums, int val)
-- \#243 int shortestDistance(vector<string>& words, string word1, string word2); 
-- \#219 bool containsNearbyDuplicate2(vector<int>& nums, int k); 
-- \#219 bool containsNearbyDuplicate1(vector<int>& nums, int k); 
-- \#169 int majorityElement(vector<int>& nums); 
-- \#119 vector<int> getPascalsRow(int rowIndex); 
-- \#118 vector<vector<int>> generatePascals(int numRows);
-- \#189 void rotate4(vector<int>& nums, int k); 
-- \#189 void rotate3(vector<int>& nums, int k); 
-- \#189 void rotate2(vector<int>& nums, int k); 
-- \#189 void rotate1(vector<int>& nums, int k); 
-- \#217 bool containsDuplicate(vector<int>& nums);
+- \#243 int shortestDistance(vector<string>& words, string word1, string word2)
+- \#219 bool containsNearbyDuplicate2(vector<int>& nums, int k)
+- \#219 bool containsNearbyDuplicate1(vector<int>& nums, int k)
+- \#169 int majorityElement(vector<int>& nums) 
+- \#119 vector<int> getPascalsRow(int rowIndex)
+- \#118 vector<vector<int>> generatePascals(int numRows)
+- \#189 void rotate4(vector<int>& nums, int k)
+- \#189 void rotate3(vector<int>& nums, int k)
+- \#189 void rotate2(vector<int>& nums, int k)
+- \#189 void rotate1(vector<int>& nums, int k)
+- \#217 bool containsDuplicate(vector<int>& nums)
+
+*Update 2016-3-6*
+
+- \#62 int uniquePaths(int m, int n) // #62
+- \#63 int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) // #63
 
 
 ##Math
