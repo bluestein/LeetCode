@@ -6,9 +6,13 @@
 #include "Math.h"
 #include "Test.h"
 #include "Array.h"
+#include "QueueByStack.h"
+#include "MinStack.h"
 #include <iostream>
 using namespace std;
 
+void minStack_test();
+void queueByStack_test();
 void list_test();
 void array_test();
 void math_test();
@@ -17,9 +21,32 @@ void test();
 
 int main()
 {
-	array_test();
-	//math_test();
+	minStack_test();
     return 0;
+}
+
+void minStack_test() 
+{
+	MinStack stack;
+	stack.push(1);
+	stack.push(2);
+	stack.pop(); stack.pop(); stack.pop();
+	cout << stack.top() << endl;
+	cout << stack.getMin() << endl;
+}
+
+void queueByStack_test() 
+{
+	QueueByStack que, que1;
+	que.push(1);
+	que.push(2);
+	que.pop();
+	cout << que.peek() << endl;
+
+	que1.push1(1);
+	que1.push1(2);
+	que1.pop1();
+	cout << que1.peek1() << endl;
 }
 
 void array_test() 
