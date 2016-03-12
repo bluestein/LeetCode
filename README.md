@@ -2,6 +2,8 @@
 
 The following is classified according to its tag, namely, [Linked List][tag-list], [Array][tag-array], and [Math][tag-math]. For example,  [problem \#328][problem-328], its tag is "Linked List". **For detail, see .h  and .cpp file, or [Some Explanation][explanation]**.
 
+[Stack][tag-stack]
+
 ##Linked List 
 
 **Source File: LinkList.h & LinkList.cpp**
@@ -58,6 +60,11 @@ The following is classified according to its tag, namely, [Linked List][tag-list
 - \#191 int hammingWeight(uint32_t n)
 - \#231 bool isPowerOfTwo(int n)
 
+##Stack
+
+- \#232 class QueueByStack
+- \#155 class MinStack;
+
 ##Some Explanation
 
 ###\#160 Get Intersection Node (*Tag: Array*)
@@ -93,6 +100,7 @@ Thanks to [RainbowSecret][rainbowSecret].
 [tag-list]: #linked-list
 [tag-array]: #array
 [tag-math]: #math
+[tag-stack]: #stack
 [explanation]: #some-explanation
 [problem-328]: https://leetcode.com/problems/odd-even-linked-list/
 [rainbowSecret]: https://leetcode.com/discuss/77946/recommend-beginners-implementation-detailed-explaination
