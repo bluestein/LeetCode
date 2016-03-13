@@ -3,16 +3,26 @@
 #include <unordered_map>
 #include <algorithm>
 
-
-Array::Array()
-{
+// Given an array of meeting time intervals consisting of start and end times[[s1, e1], [s2, e2], ...](si < ei), 
+// determine if a person could attend all meetings.
+//	For example,
+//	Given[[0, 30], [5, 10], [15, 20]],
+//	return false.
+/*static bool compare(Interval& interval1, Interval& interval2) {
+	return interval1.start < interval2.start;
 }
-
-
-Array::~Array()
-{
+bool overlap(Interval& interval1, Interval& interval2) {
+	return interval1.end > interval2.start;
 }
-
+bool Array::canAttendMeetings(vector<Interval>& intervals)
+{
+	sort(intervals.begin(), intervals.end(), compare); 
+	int n = intervals.size();
+	for (int i = 0; i < n - 1; i++)
+		if (overlap(intervals[i], intervals[i + 1]))
+			return false;
+	return true;
+}*/
 // Follow up for "Unique Paths":
 // Now consider if some obstacles are added to the grids.How many unique paths would there be ?
 // An obstacle and empty space is marked as 1 and 0 respectively in the grid.
@@ -29,10 +39,13 @@ int Array::uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid)
 	if (!m || obstacleGrid[0][0]) return 0;
 	int n = obstacleGrid[0].size();
 	if  (obstacleGrid[m - 1][n - 1]) return 0;
-	for (int i = 0; i < m; ++i) {
-		for (int j = 0; j < n; ++j) {
+	for (int i = 0; i < m; ++i) 
+	{
+		for (int j = 0; j < n; ++j) 
+		{
 			if (obstacleGrid[i][j]) obstacleGrid[i][j] = 0;
-			else {
+			else 
+			{
 				if (0 == i && 0 == j) obstacleGrid[i][j] = 1;
 				else if (0 == i && j > 0) obstacleGrid[i][j] = obstacleGrid[i][j - 1];
 				else if (i > 0 && 0 == j) obstacleGrid[i][j] = obstacleGrid[i - 1][j];
@@ -232,7 +245,7 @@ void Array::rotate3(vector<int>& nums, int k)
 		int j = i, prev = nums[(i - k) % k];
 		while (n-->0) 
 		{
-			std::swap(prev, nums[j]);
+			swap(prev, nums[j]);
 			j = (j + k) % sz;
 			if (j == i) break;
 		}

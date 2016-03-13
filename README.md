@@ -1,6 +1,6 @@
 #LeetCode
 
-The following is classified according to its tag, namely, [Linked List][tag-list], [Array][tag-array], and [Math][tag-math]. For example,  [problem \#328][problem-328], its tag is "Linked List". **For detail, see .h  and .cpp file, or [Some Explanation][explanation]**.
+The following is classified according to its tag, namely, [Linked List][tag-list], [Array][tag-array], and [Math][tag-math], etc. For example,  [problem \#328][problem-328], its tag is "Linked List". **For detail, see .h  and .cpp file, or [Some Explanation][explanation]**.
 
 [Stack][tag-stack]
 

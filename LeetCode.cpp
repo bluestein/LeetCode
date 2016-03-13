@@ -8,9 +8,13 @@
 #include "Array.h"
 #include "QueueByStack.h"
 #include "MinStack.h"
+#include "DivideConquer.h"
+#include "Strings.h"
 #include <iostream>
 using namespace std;
 
+void strings_test();
+void divedeConquer_test();
 void minStack_test();
 void queueByStack_test();
 void list_test();
@@ -21,8 +25,33 @@ void test();
 
 int main()
 {
-	minStack_test();
+	//divedeConquer_test(); 
+	//strings_test();
+	math_test();
     return 0;
+}
+void strings_test()
+{
+	Strings s;
+	vector<string> v = s.generatePossibleNextMoves("++++");
+	for (string str : v)
+	{
+		cout << str << endl;
+	}
+	cout << s.canPermutePalindrome("code") << endl;
+}
+void divedeConquer_test()
+{
+	DivideConquer divide;
+	vector<vector<int>> matrix;
+	int arr1[] = {1, 4, 7, 11, 15};
+	int arr2[] = {2, 5, 8, 12, 19};
+	int arr3[] = {3, 6, 9, 16, 22};
+	matrix.push_back(vector<int>(arr1, arr1 + 5));
+	matrix.push_back(vector<int>(arr2, arr2 + 5));
+	matrix.push_back(vector<int>(arr3, arr3 + 5));
+	cout << divide.searchMatrix(matrix, 22) << endl;
+	cout << divide.searchMatrix2(matrix, 1) << endl;
 }
 
 void minStack_test() 
@@ -73,10 +102,11 @@ void math_test()
 	Math math;
 	cout << "Power of three" << endl;
 	cout << math.isPowerOfThree(243) << endl;
-
 	cout << math.isPowerOfTwo(8) << endl;
-
 	cout << math.hammingWeight(3) << endl;
+	cout << math.convertToTitle(52) << endl;
+	cout << math.titleToNumber("AZ") << endl;
+	cout << math.romanToInt("MMMCCCXXXIII");
 }
 
 void test() 
