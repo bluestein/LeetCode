@@ -1,8 +1,15 @@
 #LeetCode
 
-The following is classified according to its tag, namely, [Linked List][tag-list], [Array][tag-array], and [Math][tag-math], etc. For example,  [problem \#328][problem-328], its tag is "Linked List". **For detail, see .h  and .cpp file, or [Some Explanation][explanation]**.
+The following is classified according to its tag. For example,  [problem \#328][problem-328], its tag is "Linked List". **For detail, see .h  and .cpp file, or [Some Explanation][explanation]**.
 
-[Stack][tag-stack]
+### Tags:  ###
+
+- [Linked List][tag-list]
+- [Array][tag-array]
+- [Math][tag-math]
+- [Stack][tag-stack]
+- [Divide&Conquer][tag-divideconquer]
+- [Strings][tag-strings]
 
 ##Linked List 
 
@@ -14,20 +21,15 @@ The following is classified according to its tag, namely, [Linked List][tag-list
 - \#92 ListNode\* reverseBetween2(ListNode\* head, int m, int n)
 - \#19 ListNode\* removeNthFromEnd(ListNode\* head, int n)
 - \#203 ListNode\* removeElements(ListNode\* head, int val)
-
-*Update 2016-3-3*
-
 - \#234 bool isPalindrome(ListNode\* head)
 - \#160 ListNode\* getIntersectionNode(ListNode\* headA, ListNode\* headB)
 - \#148 ListNode\* sortList1(ListNode\* head)
 - \#148 ListNode\* sortList2(ListNode\* head)
-- \#109 TreeNode\* LinkList::sortedListToBST(ListNode\* head)
+- \#109 TreeNode\* sortedListToBST(ListNode\* head)
 
 ##Array
 
 **Source File: Array.h & Array.cpp**
-
-*Update 2016-3-5*
 
 - \#283 void moveZeroes(vector<int>& nums)
 - \#27 int removeElement(arr& nums, int val)
@@ -42,11 +44,9 @@ The following is classified according to its tag, namely, [Linked List][tag-list
 - \#189 void rotate2(vector<int>& nums, int k)
 - \#189 void rotate1(vector<int>& nums, int k)
 - \#217 bool containsDuplicate(vector<int>& nums)
-
-*Update 2016-3-6*
-
-- \#62 int uniquePaths(int m, int n) // #62
-- \#63 int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) // #63
+- \#252 bool canAttendMeetings(vector<Interval>& intervals)
+- \#62 int uniquePaths(int m, int n)
+- \#63 int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid)
 
 
 ##Math
@@ -54,16 +54,32 @@ The following is classified according to its tag, namely, [Linked List][tag-list
 **Source File: Math.h & Math.cpp**
 
 - \#326 bool isPowerOfThree(int n)
-
-*Update 2016-3-4*
-
 - \#191 int hammingWeight(uint32_t n)
 - \#231 bool isPowerOfTwo(int n)
+- \#13 int romanToInt(string s)
+- \#168 string convertToTitle(int n)
+- \#171 int titleToNumber(string s)
+- \#292 bool canWinNim(int n)
 
 ##Stack
 
 - \#232 class QueueByStack
-- \#155 class MinStack;
+	- Source File: QueueByStack.h & QueueByStack.cpp
+- \#155 class MinStack
+	- Source File: MinStack.h & MinStack.cpp
+
+##DivideConquer
+
+**Source File: DivideConquer.h & DivideConquer.cpp**
+
+- \#240 bool searchMatrix(vector<vector<int>> matrix, int target)
+
+##Strings
+
+**Source File: Strings.h & Strings.cpp**
+
+- \#266 bool canPermutePalindrome(string s)
+- \#293 vector<string> generatePossibleNextMoves(string s)
 
 ##Some Explanation
 
@@ -101,6 +117,8 @@ Thanks to [RainbowSecret][rainbowSecret].
 [tag-array]: #array
 [tag-math]: #math
 [tag-stack]: #stack
+[tag-divideconquer]: #divideconquer
+[tag-strings]: #strings
 [explanation]: #some-explanation
 [problem-328]: https://leetcode.com/problems/odd-even-linked-list/
 [rainbowSecret]: https://leetcode.com/discuss/77946/recommend-beginners-implementation-detailed-explaination
