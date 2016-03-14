@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Math.h"
-#include <math.h>
 
 // You are playing the following Nim Game with your friend: 
 // There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones.
@@ -104,6 +103,7 @@ int Math::titleToNumber(string s)
 /*
 Given a roman numeral, convert it to an integer.
 Input is guaranteed to be within the range from 1 to 3999.
+wiki: https://en.wikipedia.org/wiki/Roman_numerals
 */
 int Math::romanToInt(string s)
 {
@@ -116,4 +116,69 @@ int Math::romanToInt(string s)
 		sum += map[s[i]] >= map[s[i + 1]] ? map[s[i]] : -map[s[i]];
 	}
 	return sum;
+}
+
+//Given an integer n, return the number of trailing zeroes in n!.
+//Note: Your solution should be in logarithmic time complexity.
+// the 0 come from 2*5, so we just need count the number of 5.
+int Math::trailingZeroes(int n)
+{
+	int numZeros(0);
+	while (n)
+	{
+		n /= 5;
+		numZeros += n;
+	}
+	return numZeros;
+}
+
+//Determine whether an integer is a palindrome. Do this in constant space.
+bool Math::isPalindrome(int n)
+{
+	// reverse the integer
+	int result = 0, tmp = n;
+	while (n > 0)
+	{
+		result = result * 10 + n % 10;
+		if (result > tmp) return false;
+		n /= 10;
+	}
+	return result == tmp;
+}
+
+// Determine if a Sudoku is valid, according to : 
+// [Sudoku Puzzles - The Rules](http ://sudoku.com.au/TheRules.aspx).
+// The Sudoku board could be partially filled, where empty cells are filled with the character '.'.
+bool Math::isValidSudoku(vector<vector<char>>& board)
+{
+	// check row, col, and block at the same time
+	bool row[9][9] = { false }, col[9][9] = { false }, block[9][9] = { false };
+	for (int i = 0; i < 9; i ++)
+	{
+		for (int j = 0; j < 9; j ++)
+		{
+			if (board[i][j] != '.')
+			{
+				//num should be in the range of [0, 8] instead of [1, 9] to be mapped in to row[9][9];
+				int num = board[i][j] - '1'; 
+				//mapping num into sub - blocks
+				int k = i / 3 * 3 + j / 3;
+				if (row[i][num] || col[j][num] || block[k][num]) return false;
+				row[i][num] = col[j][num] = block[k][num] = true;
+			}
+		}
+	}
+	return true;
+}
+
+// Find the total area covered by two rectilinear rectangles in a 2D plane.
+// Each rectangle is defined by its bottom left corner and top right corner
+// Assume that the total area is never beyond the maximum possible value of int.
+int Math::computeArea(int A, int B, int C, int D, int E, int F, int G, int H)
+{
+	int total = (C - A) * (D - B) + (G - E) * (H - F);
+	if (E >= C || F >= D || A >= G || B >= H) return total; // no overlap
+	int I = max(A, E), J = max(B, F); // bottom left
+	int K = min(C, G), L = min(D, H); // top right
+	return total - (K - I) * (L - J);
 }

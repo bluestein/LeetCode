@@ -1,6 +1,41 @@
 #include "stdafx.h"
 #include "Trees.h"
 
+TreeNode* Trees::BuildTreeByLevel(vector<int> nums) // 0 means null
+{
+	TreeNode *root;
+	if (nums.empty()) return NULL;
+	root = new TreeNode(nums[0]);
+	queue<TreeNode*> que;
+	que.push(root);
+	int len = 1;
+	while (!que.empty() && len < nums.size())
+	{
+		int curLevel = que.size();
+		while (curLevel-- && len < nums.size())
+		{
+			TreeNode* node = que.front();
+			que.pop();
+			for (int i = 0; i < 2; i++) // left and right node
+			{
+				TreeNode *tmp = nums[len] ? new TreeNode(nums[len]) : NULL;
+				if (len % 2)
+				{
+					node->left = tmp;
+				}
+				else
+				{
+					node->right = tmp;
+				}
+				if (tmp) que.push(tmp);
+				len++;
+			}
+		}
+
+	}
+	return root;
+}
+
 // Given a binary tree, find its maximum depth.
 // The maximum depth is the number of nodes 
 // along the longest path from the root node down to the farthest leaf node.
@@ -57,11 +92,16 @@ TreeNode* Trees::invertTree(TreeNode* root)
 //Two binary trees are considered equal if they are structurally identical and the nodes have the same value.
 bool Trees::isSameTree(TreeNode* p, TreeNode* q)
 {
-	if (p == NULL && q == NULL || (p != NULL && q != NULL && p->val == q->val))
-		return true;
-	else
-		return false;
+	if (p == NULL && q == NULL) return true;
+	return (p != NULL && q != NULL && p->val == q->val) &&
+		isSameTree(p->left, q->left) &&
+		isSameTree(p->right, q->right);
+	
+	/*
+	if (p == NULL && q == NULL) return true;
+	if (!(p && q) || p->val != q->val) return false;
 	return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+	*/
 }
 
 //Given a binary search tree(BST), 
@@ -76,4 +116,145 @@ TreeNode* Trees::lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q)
 		if ((root->val - p->val) * (root->val - q->val) <= 0) return root;
 		else root = root->val - p->val > 0 ? root->left : root->right;
 	}
+}
+
+//Given a binary tree, check whether it is a mirror of itself(ie, symmetric around its center).
+//  recursive
+bool symmetricHelper(TreeNode* left, TreeNode* right)
+{
+	if (!(left && right)) return left == right;
+	if (left->val != right->val) return false;
+	return symmetricHelper(left->left, right->right) && symmetricHelper(left->right, right->left);
+}
+bool Trees::isSymmetric(TreeNode* root)
+{
+	if (root == NULL) return true;
+	return symmetricHelper(root->left, root->right);
+}
+// iterative
+bool Trees::isSymmetric1(TreeNode* root)
+{
+	if (root == NULL) return true; 
+	if (!(root->left && root->right)) return root->left == root->right;
+	stack<TreeNode*> stk;
+	stk.push(root->left), stk.push(root->right);
+	while (!stk.empty())
+	{
+		TreeNode *node1 = stk.top();
+		stk.pop();
+		TreeNode *node2 = stk.top();
+		stk.pop();
+
+		if (node1->val != node2->val) return false;
+		if (!(node1->left && node2->right) && !(node1->left == NULL && node2->right == NULL)) return false;
+		if (!(node1->right && node2->left) && !(node1->right == NULL && node2->left == NULL)) return false;
+		
+		if (node1->left)
+		{
+			stk.push(node1->left), stk.push(node2->right);
+		}
+		if (node2->left)
+		{
+			stk.push(node1->right), stk.push(node2->left);
+		}
+
+	}
+	return true;
+}
+
+//Given a binary tree, return the level order traversal of its nodes' values. 
+//(ie, from left to right, level by level).
+vector<vector<int>> Trees::levelOrder(TreeNode* root)
+{
+	vector<vector<int>> result;
+	queue<TreeNode*> q1, q2;
+	if (root) q1.push(root);
+	while (!q1.empty() || !q2.empty())
+	{
+		q1 = q1.empty() ? q2 : q1;
+		queue<TreeNode*> t;
+		q2 = t;
+		vector<int> level;
+		while (!q1.empty())
+		{
+			TreeNode* node = q1.front();
+			level.push_back(node->val);
+			q1.pop();
+			if (node->left) q2.push(node->left);
+			if (node->right) q2.push(node->right);
+		}
+		result.push_back(level);
+	}
+	return result;
+}
+
+//Given a binary tree, return the bottom - up level order traversal of its nodes' values. 
+//(ie, from left to right, level by level from leaf to root).
+vector<vector<int>> Trees::levelOrderBottom(TreeNode* root)
+{
+	vector<vector<int>> result;
+	queue<TreeNode*> q;
+	if (root) q.push(root);
+	while (!q.empty())
+	{
+		int lastLevel = q.size();
+		vector<int> level;
+		while (lastLevel--)
+		{
+			TreeNode* node = q.front();
+			q.pop();
+			level.push_back(node->val);
+			if (node->left) q.push(node->left);
+			if (node->right) q.push(node->right);
+		}
+		result.push_back(level);
+	}
+	reverse(result.begin(), result.end());
+	return result;
+}
+
+//Given a binary tree and a sum, determine if the tree has a root - to - leaf path 
+//such that adding up all the values along the path equals the given sum.
+// depth-first-search
+bool Trees::hasPathSum(TreeNode* root, int sum)
+{
+	if (!root) return false;
+	// the leave val == the rest of sum
+	if (root->val == sum && root->left == NULL && root->right == NULL) return true;
+	return hasPathSum(root->left, sum - root->val) || hasPathSum(root->right, sum - root->val);
+}
+
+//Given a binary tree, find its minimum depth.
+//The minimum depth is the number of nodes along the shortest path 
+//from the root node down to the nearest leaf node.
+// breadth-first
+int Trees::minDepth(TreeNode* root)
+{
+	queue<TreeNode*> q;
+	if (root) q.push(root);
+	int depth = 0;
+	while (!q.empty())
+	{
+		depth++;
+		int lastLevel = q.size();
+		while (lastLevel--)
+		{
+			TreeNode* node = q.front();
+			q.pop();
+			if (!node->left && !node->right) return depth;
+			if (node->left) q.push(node->left);
+			if (node->right) q.push(node->right);
+		}
+	}
+	return depth;
+}
+// recursive
+int Trees::minDepth1(TreeNode* root)
+{
+	if (!root) return 0;
+	if (!root->left && !root->right) return 1;
+	int lDepth = INT_MAX, rDepth = INT_MAX;
+	if (root->left) lDepth = minDepth1(root->left) + 1;
+	if (root->right) rDepth = minDepth1(root->right) + 1;
+	return min(lDepth, rDepth);
 }

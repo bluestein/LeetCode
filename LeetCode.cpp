@@ -9,10 +9,13 @@
 #include "QueueByStack.h"
 #include "MinStack.h"
 #include "DivideConquer.h"
+#include "BSTIterator.h"
 #include "Strings.h"
+#include "Trees.h"
 #include <iostream>
 using namespace std;
 
+void BSTIterator_test();
 void strings_test();
 void divedeConquer_test();
 void minStack_test();
@@ -22,13 +25,30 @@ void array_test();
 void math_test();
 void test();
 
-
 int main()
 {
 	//divedeConquer_test(); 
 	//strings_test();
-	math_test();
+	//math_test();
+	BSTIterator_test();
     return 0;
+}
+
+void BSTIterator_test()
+{
+	vector<int> nums = { 5,2,7,0,3,6,9,0,0,0,0,0,10 };
+	TreeNode* root = Trees::BuildTreeByLevel(nums);
+
+	BSTIterator i = BSTIterator(root);
+	while (i.hasNext())
+	{
+		cout << i.next() << endl;
+	}
+	cout << endl;
+	while (i.hasNextByStack())
+	{
+		cout << i.nextByStack() << endl;
+	}
 }
 void strings_test()
 {
@@ -106,7 +126,9 @@ void math_test()
 	cout << math.hammingWeight(3) << endl;
 	cout << math.convertToTitle(52) << endl;
 	cout << math.titleToNumber("AZ") << endl;
-	cout << math.romanToInt("MMMCCCXXXIII");
+	cout << math.romanToInt("MMMCCCXXXIII") << endl;
+	cout << math.trailingZeroes(5) << endl;
+	cout << math.isPalindrome(77) << endl;
 }
 
 void test() 
