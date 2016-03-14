@@ -10,6 +10,8 @@ The following is classified according to its tag. For example,  [problem \#328][
 - [Stack][tag-stack]
 - [Divide&Conquer][tag-divideconquer]
 - [Strings][tag-strings]
+- [Tree][tag-trees]
+- [DynamicProgramming][tag-dp]
 
 ##Linked List 
 
@@ -60,6 +62,10 @@ The following is classified according to its tag. For example,  [problem \#328][
 - \#168 string convertToTitle(int n)
 - \#171 int titleToNumber(string s)
 - \#292 bool canWinNim(int n)
+- \#9 bool isPalindrome(int n)
+- \#172 int trailingZeroes(int n)
+- \#36 bool isValidSudoku(vector<vector<char>>& board)
+- \#223 int computeArea(int A, int B, int C, int D, int E, int F, int G, int H)
 
 ##Stack
 
@@ -80,6 +86,18 @@ The following is classified according to its tag. For example,  [problem \#328][
 
 - \#266 bool canPermutePalindrome(string s)
 - \#293 vector<string> generatePossibleNextMoves(string s)
+
+##Trees
+
+- \#101 bool isSymmetric(TreeNode* root)
+- \#102 vector<vector<int>> levelOrder(TreeNode* root)
+- \#107 vector<vector<int>> levelOrderBottom(TreeNode* root)
+- \#112 bool hasPathSum(TreeNode* root, int sum)
+- \#111 int minDepth(TreeNode* root)
+
+##DynamicProgramming
+
+- \#198 int rob(vector<int>& nums)
 
 ##Some Explanation
 
@@ -119,6 +137,8 @@ Thanks to [RainbowSecret][rainbowSecret].
 [tag-stack]: #stack
 [tag-divideconquer]: #divideconquer
 [tag-strings]: #strings
+[tag-trees]: #trees
+[tag-dp]: #dynamicprogramming
 [explanation]: #some-explanation
 [problem-328]: https://leetcode.com/problems/odd-even-linked-list/
 [rainbowSecret]: https://leetcode.com/discuss/77946/recommend-beginners-implementation-detailed-explaination
