@@ -28,16 +28,18 @@ void test();
 int main()
 {
 	//divedeConquer_test(); 
-	//strings_test();
+	strings_test();
 	//math_test();
-	BSTIterator_test();
+	//BSTIterator_test();
     return 0;
 }
 
 void BSTIterator_test()
 {
-	vector<int> nums = { 5,2,7,0,3,6,9,0,0,0,0,0,10 };
-	TreeNode* root = Trees::BuildTreeByLevel(nums);
+	vector<int> nums = { 5,2,7,0,3,6,9,0,0,0,0,0,10 }; 
+	TreeNode* root = Trees::BuildHeap(nums);
+	/*int len = nums.size() - 1;
+	TreeNode* root = Trees::BuildHeap(nums, 0, len);*/
 
 	BSTIterator i = BSTIterator(root);
 	while (i.hasNext())
@@ -59,6 +61,9 @@ void strings_test()
 		cout << str << endl;
 	}
 	cout << s.canPermutePalindrome("code") << endl;
+	cout << s.isIsomorphic("abbc", "accb") << endl;
+	cout << s.getHint("9999", "9993") << endl;
+	cout << s.countAndSay(5) << endl;
 }
 void divedeConquer_test()
 {
@@ -129,6 +134,7 @@ void math_test()
 	cout << math.romanToInt("MMMCCCXXXIII") << endl;
 	cout << math.trailingZeroes(5) << endl;
 	cout << math.isPalindrome(77) << endl;
+	cout << math.reverseBits(43261596) << endl;
 }
 
 void test() 

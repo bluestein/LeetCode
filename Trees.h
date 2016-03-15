@@ -8,7 +8,8 @@ using namespace std;
 class Trees
 {
 public:
-	static TreeNode* BuildTreeByLevel(vector<int>);
+	static TreeNode* BuildHeap(vector<int>);
+	static TreeNode* BuildHeap(vector<int>, int, int);
 	int maxDepth(TreeNode* root); // #104
 	TreeNode* invertTree(TreeNode* root); // #226
 	bool isSameTree(TreeNode* p, TreeNode* q); // #100

@@ -1,10 +1,36 @@
 #include "stdafx.h"
 #include "Trees.h"
 
-TreeNode* Trees::BuildTreeByLevel(vector<int> nums) // 0 means null
+TreeNode* Trees::BuildHeap(vector<int> nums) // 0 means null
 {
-	TreeNode *root;
-	if (nums.empty()) return NULL;
+	TreeNode *root = NULL;
+	if (nums.empty()) return root;
+	root = new TreeNode(nums[0]);
+	queue<TreeNode*> que;
+	que.push(root);
+	TreeNode *cur = NULL;
+	for (int i = 1; i < nums.size(); ++i)
+	{
+		TreeNode* node = NULL;
+		if (nums[i]) // nums[i] != 0, create node
+		{
+			node = new TreeNode(nums[i]);
+			que.push(node);
+		}
+		if (i % 2) // left child
+		{
+			cur = que.front(), que.pop();
+			cur->left = node;
+		}
+		else
+		{
+			cur->right = node;
+		}
+	}
+	return root;
+
+	/*TreeNode *root = NULL;
+	if (nums.empty()) return root;
 	root = new TreeNode(nums[0]);
 	queue<TreeNode*> que;
 	que.push(root);
@@ -32,6 +58,22 @@ TreeNode* Trees::BuildTreeByLevel(vector<int> nums) // 0 means null
 			}
 		}
 
+	}
+	return root;*/
+}
+
+//each element a at index i has:
+//1. children at indices 2i + 1 and 2i + 2.
+//2. its parent floor((i - 1) / 2).
+TreeNode* Trees::BuildHeap(vector<int> nums, int cur, int len) // 0 means null
+{
+	TreeNode *root = NULL;
+	if (cur > len) return root;
+	if (nums[cur]) root = new TreeNode(nums[cur]);
+	if (root)
+	{
+		root->left = BuildHeap(nums, 2 * cur + 1, len);
+		root->right = BuildHeap(nums, 2 * cur + 2, len);
 	}
 	return root;
 }
@@ -190,6 +232,7 @@ vector<vector<int>> Trees::levelOrder(TreeNode* root)
 
 //Given a binary tree, return the bottom - up level order traversal of its nodes' values. 
 //(ie, from left to right, level by level from leaf to root).
+// breadth-first
 vector<vector<int>> Trees::levelOrderBottom(TreeNode* root)
 {
 	vector<vector<int>> result;

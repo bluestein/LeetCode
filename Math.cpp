@@ -182,3 +182,33 @@ int Math::computeArea(int A, int B, int C, int D, int E, int F, int G, int H)
 	int K = min(C, G), L = min(D, H); // top right
 	return total - (K - I) * (L - J);
 }
+
+//Reverse bits of a given 32 bits unsigned integer.
+//For example, given input 43261596 (represented in binary as 00000010100101000001111010011100), return 964176192 (represented in binary as 00111001011110000010100101000000).
+//Follow up :
+//If this function is called many times, how would you optimize it ?
+uint32_t Math::reverseBits(uint32_t n)
+{
+	/*uint32_t ans = 0, range = 32;
+	while (range--)
+	{
+		ans <<= 1;
+		ans |= n & 1;
+		n >>= 1;
+	}
+	return ans;*/
+
+	// solution2: bitset
+	bitset<32> bSet(n);
+	int l = 0, r = 31;
+	while (r > l)
+	{
+		if ((!bSet[l] && bSet[r]) || (bSet[l] && !bSet[r]))
+		{
+			bSet.flip(l);
+			bSet.flip(r);
+		}
+		l++, r--;
+	}
+	return bSet.to_ulong();
+}
