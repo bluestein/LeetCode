@@ -212,3 +212,83 @@ uint32_t Math::reverseBits(uint32_t n)
 	}
 	return bSet.to_ulong();
 }
+
+//Count the number of prime numbers less than a non - negative number, n.
+int Math::countPrimes_sqrt(int n)
+{
+	int count = 0;
+	for (int i = 0; i < n; ++i)
+	{
+		if (isPrime(i)) count++;
+	}
+	return count;
+}
+/*
+Let's write down all of 12's factors :
+	2 ¡Á 6 = 12
+	3 ¡Á 4 = 12
+	4 ¡Á 3 = 12
+	6 ¡Á 2 = 12
+As you can see, calculations of 4 ¡Á 3 and 6 ¡Á 2 are not necessary.
+Therefore, we only need to consider factors up to ¡Ìn because, 
+if n is divisible by some number p, then n = p ¡Á q and since p ¡Ü q, 
+we could derive that p ¡Ü ¡Ìn.
+O(n^1.5)
+*/
+bool Math::isPrime(int n)
+{
+	if (n <= 1) return false;
+	// Loop's ending condition is i * i <= num instead of i <= sqrt(num)
+	// to avoid repeatedly calling an expensive function sqrt().
+	for (int i = 2; i * i <= n; ++i)
+	{
+		if (n % i == 0) return false;
+	}
+	return true;
+}
+//Sieve_of_Eratosthenes
+//https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+int Math::countPrimes_SoE(int n)
+{
+	/*vector<bool> isPrime(n);
+	for (int i = 2; i < n; ++i)
+	{
+		isPrime[i] = true;
+	}
+	for (int i = 2; i * i < n; ++i)
+	{
+		if (!isPrime[i]) continue;
+		for (int j = i * i; j < n; j += i)
+		{
+			isPrime[j] = false;
+		}
+	}
+	int count = 0;
+	for (int i = 0; i < n; ++i)
+	{
+		if (isPrime[i]) count++;
+	}
+	return count;*/
+
+	if (n <= 2) return 0;
+	// cnt = 1 for number 2, because we do not count it next
+	int cnt = 1;
+	bool* isprimes = new bool[n];
+	for (int i = 0; i < n; i++)
+		isprimes[i] = true;
+
+	// skip all even number
+	for (int i = 3; i*i <= n; i += 2) {
+		if (isprimes[i])
+			// i is a odd number so, i*i + i, i*i + 3i... are even number, so we skip these number by doing j += 2*i
+			for (int j = i*i; j < n; j += 2 * i)
+				isprimes[j] = false;
+	}
+
+	// skip all even number
+	for (int i = 3; i < n; i += 2) {
+		if (isprimes[i] == true)
+			cnt++;
+	}
+	return cnt;
+}

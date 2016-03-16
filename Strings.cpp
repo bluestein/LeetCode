@@ -127,3 +127,69 @@ string Strings::countAndSay(int n)
 	}
 	return ans;
 }
+
+//Write a function to find the longest common prefix string amongst an array of strings.
+string Strings::longestCommonPrefix(vector<string>& strs)
+{
+	if (!strs.size() || !strs[0].size()) return string();
+	string prefix = strs[0];
+	for (int i = 1; i < strs.size(); ++i)
+	{
+		string::iterator it = prefix.begin();
+		int j = 0;
+		string cur = strs[i];
+		while (j < prefix.size() && j < strs[i].size())
+		{
+			if (cur[j] != prefix[j]) break;
+			j++;
+		}
+		string::iterator erase_start = it + j;
+		prefix.erase(erase_start, prefix.end());
+		if (!prefix.size()) return string();
+	}
+	return prefix;
+}
+
+//Given two binary strings, return their sum(also a binary string).
+//For example,
+//a = "11"
+//b = "1"
+//Return "100".
+string Strings::addBinary(string a, string b)
+{
+	string::reverse_iterator it_a = a.rbegin(), it_b = b.rbegin();
+	int carry = 0;
+	string ans;
+	while (it_a != a.rend() || it_b != b.rend())
+	{
+		int val_a = 0, val_b = 0;
+		if (it_a != a.rend())
+		{
+			val_a = *it_a - '0';
+			it_a++;
+		}
+		if (it_b != b.rend())
+		{
+			val_b = *it_b - '0';
+			it_b++;
+		}
+		int sum = val_a + val_b + carry;
+		carry = sum / 2;
+		ans = to_string(sum % 2) + ans;
+	}
+	if (carry) ans = to_string(carry) + ans;
+	return ans;
+}
+
+//Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+int Strings::strStr(string haystack, string needle)
+{
+	int lenN = needle.size(), lenH = haystack.size();
+	if (!lenN) return 0;
+	if (lenN > lenH) return -1;
+	for (int i = 0; i <= lenH - lenN; ++i)
+	{
+		if (haystack.substr(i, lenN) == needle) return i;
+	}
+	return -1;
+}

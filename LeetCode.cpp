@@ -28,10 +28,10 @@ void test();
 
 int main()
 {
-	trees_test();
+	//trees_test();
 	//divedeConquer_test(); 
 	//strings_test();
-	//math_test();
+	math_test();
 	//BSTIterator_test();
     return 0;
 }
@@ -89,6 +89,8 @@ void strings_test()
 	string strs[] = { "","ab", "abd" };
 	vector<string> svec(strs, strs + 3);
 	cout << s.longestCommonPrefix(svec) << endl;
+	cout << s.addBinary("1", "1") << endl;
+	cout << s.strStr("hello", "o") << endl;
 	
 }
 void divedeConquer_test()
@@ -161,6 +163,12 @@ void math_test()
 	cout << math.trailingZeroes(5) << endl;
 	cout << math.isPalindrome(77) << endl;
 	cout << math.reverseBits(43261596) << endl;
+	vector<int> range = { 72,216,432,720,1080};
+	for (auto n : range)
+	{
+		cout << math.countPrimes_sqrt(n) << endl;
+		cout << math.countPrimes_SoE(n) << endl;
+	}
 }
 
 void test() 
