@@ -33,22 +33,22 @@ The following is classified according to its tag. For example,  [problem \#328][
 
 **Source File: Array.h & Array.cpp**
 
-- \#283 void moveZeroes(vector<int>& nums)
+- \#283 void moveZeroes(vector&lt;int&gt;& nums)
 - \#27 int removeElement(arr& nums, int val)
-- \#243 int shortestDistance(vector<string>& words, string word1, string word2)
-- \#219 bool containsNearbyDuplicate2(vector<int>& nums, int k)
-- \#219 bool containsNearbyDuplicate1(vector<int>& nums, int k)
-- \#169 int majorityElement(vector<int>& nums) 
-- \#119 vector<int> getPascalsRow(int rowIndex)
-- \#118 vector<vector<int>> generatePascals(int numRows)
-- \#189 void rotate4(vector<int>& nums, int k)
-- \#189 void rotate3(vector<int>& nums, int k)
-- \#189 void rotate2(vector<int>& nums, int k)
-- \#189 void rotate1(vector<int>& nums, int k)
-- \#217 bool containsDuplicate(vector<int>& nums)
-- \#252 bool canAttendMeetings(vector<Interval>& intervals)
+- \#243 int shortestDistance(vector&lt;string&gt;& words, string word1, string word2)
+- \#219 bool containsNearbyDuplicate2(vector&lt;int&gt;& nums, int k)
+- \#219 bool containsNearbyDuplicate1(vector&lt;int&gt;& nums, int k)
+- \#169 int majorityElement(vector&lt;int&gt;& nums) 
+- \#119 vector&lt;int&gt; getPascalsRow(int rowIndex)
+- \#118 vector&lt;vector&lt;int&gt;&gt; generatePascals(int numRows)
+- \#189 void rotate4(vector&lt;int&gt;& nums, int k)
+- \#189 void rotate3(vector&lt;int&gt;& nums, int k)
+- \#189 void rotate2(vector&lt;int&gt;& nums, int k)
+- \#189 void rotate1(vector&lt;int&gt;& nums, int k)
+- \#217 bool containsDuplicate(&lt;int&gt;& nums)
+- \#252 bool canAttendMeetings(vector&lt;Interval&gt;& intervals)
 - \#62 int uniquePaths(int m, int n)
-- \#63 int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid)
+- \#63 int uniquePathsWithObstacles(vector&lt;vector&lt;int&gt;&gt;& obstacleGrid)
 
 
 ##Math
@@ -64,7 +64,7 @@ The following is classified according to its tag. For example,  [problem \#328][
 - \#292 bool canWinNim(int n)
 - \#9 bool isPalindrome(int n)
 - \#172 int trailingZeroes(int n)
-- \#36 bool isValidSudoku(vector<vector<char>>& board)
+- \#36 bool isValidSudoku(vector&lt;vector&lt;char&gt;&gt;& board)
 - \#223 int computeArea(int A, int B, int C, int D, int E, int F, int G, int H)
 - \#190 uint32_t reverseBits(uint32_t n)
 - \#204 int countPrimes_sqrt(int n)
@@ -81,18 +81,18 @@ The following is classified according to its tag. For example,  [problem \#328][
 
 **Source File: DivideConquer.h & DivideConquer.cpp**
 
-- \#240 bool searchMatrix(vector<vector<int>> matrix, int target)
+- \#240 bool searchMatrix(vector&lt;vector&lt;int&gt;&gt; matrix, int target)
 
 ##Strings
 
 **Source File: Strings.h & Strings.cpp**
 
 - \#266 bool canPermutePalindrome(string s)
-- \#293 vector<string> generatePossibleNextMoves(string s)
+- \#293 vector&lt;string&gt; generatePossibleNextMoves(string s)
 - \#205 bool isIsomorphic(string s, string t)
 - \#229 string getHint(string secret, string guess)
 - \#38 string countAndSay(int n)
-- \#14 string longestCommonPrefix(vector<string>& strs)
+- \#14 string longestCommonPrefix(vector&lt;string&gt;& strs)
 - \#67 string addBinary(string a, string b)
 - \#28 int strStr(string haystack, string needle)
 
@@ -101,8 +101,8 @@ The following is classified according to its tag. For example,  [problem \#328][
 **Source File: Trees.h & Trees.cpp**
 
 - \#101 bool isSymmetric(TreeNode* root)
-- \#102 vector<vector<int>> levelOrder(TreeNode* root)
-- \#107 vector<vector<int>> levelOrderBottom(TreeNode* root)
+- \#102 vector&lt;vector&lt;int&gt;&gt; levelOrder(TreeNode* root)
+- \#107 vector&lt;vector&lt;int&gt;&gt; levelOrderBottom(TreeNode* root)
 - \#112 bool hasPathSum(TreeNode* root, int sum)
 - \#111 int minDepth(TreeNode* root)
 
@@ -110,7 +110,7 @@ The following is classified according to its tag. For example,  [problem \#328][
 
 **Source File: DynamicProgramming.h & DynamicProgramming.cpp**
 
-- \#198 int rob(vector<int>& nums)
+- \#198 int rob(vector&lt;int&gt;& nums)
 
 ##Some Explanation
 
