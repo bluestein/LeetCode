@@ -40,20 +40,20 @@ bool QueueByStack::empty(void)
 /*************solution2*************/
 
 // Push element x to the back of queue.
-void QueueByStack::push1(int x) 
+void QueueByStack::pushX(int x) 
 {
 	in.push(x);
 }
 
 // Removes the element from in front of queue.
-void QueueByStack::pop1(void) 
+void QueueByStack::popX(void) 
 {
-	peek1();
+	peekX();
 	out.pop();
 }
 
 // Get the front element.
-int QueueByStack::peek1(void) 
+int QueueByStack::peekX(void) 
 {
 	if (!out.empty()) return out.top();
 	while (!in.empty())
@@ -65,7 +65,7 @@ int QueueByStack::peek1(void)
 }
 
 // Return whether the queue is empty.
-bool QueueByStack::empty1(void) 
+bool QueueByStack::emptyX(void) 
 {
 	return out.empty() && in.empty();
 }

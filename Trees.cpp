@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Trees.h"
 
-TreeNode* Trees::BuildHeap(vector<int> nums) // 0 means null
+TreeNode* Trees::BuildHeap_i(vector<int> nums) // 0 means null
 {
 	TreeNode *root = NULL;
 	if (nums.empty()) return root;
@@ -65,15 +65,15 @@ TreeNode* Trees::BuildHeap(vector<int> nums) // 0 means null
 //each element a at index i has:
 //1. children at indices 2i + 1 and 2i + 2.
 //2. its parent floor((i - 1) / 2).
-TreeNode* Trees::BuildHeap(vector<int> nums, int cur, int len) // 0 means null
+TreeNode* Trees::BuildHeap_r(vector<int> nums, int cur, int len) // 0 means null
 {
 	TreeNode *root = NULL;
 	if (cur > len) return root;
 	if (nums[cur]) root = new TreeNode(nums[cur]);
 	if (root)
 	{
-		root->left = BuildHeap(nums, 2 * cur + 1, len);
-		root->right = BuildHeap(nums, 2 * cur + 2, len);
+		root->left = BuildHeap_r(nums, 2 * cur + 1, len);
+		root->right = BuildHeap_r(nums, 2 * cur + 2, len);
 	}
 	return root;
 }
@@ -168,13 +168,13 @@ bool symmetricHelper(TreeNode* left, TreeNode* right)
 	if (left->val != right->val) return false;
 	return symmetricHelper(left->left, right->right) && symmetricHelper(left->right, right->left);
 }
-bool Trees::isSymmetric(TreeNode* root)
+bool Trees::isSymmetric_r(TreeNode* root)
 {
 	if (root == NULL) return true;
 	return symmetricHelper(root->left, root->right);
 }
 // iterative
-bool Trees::isSymmetric1(TreeNode* root)
+bool Trees::isSymmetric_i(TreeNode* root)
 {
 	if (root == NULL) return true; 
 	if (!(root->left && root->right)) return root->left == root->right;
@@ -271,7 +271,7 @@ bool Trees::hasPathSum(TreeNode* root, int sum)
 //The minimum depth is the number of nodes along the shortest path 
 //from the root node down to the nearest leaf node.
 // breadth-first
-int Trees::minDepth(TreeNode* root)
+int Trees::minDepth_i(TreeNode* root)
 {
 	queue<TreeNode*> q;
 	if (root) q.push(root);
@@ -292,12 +292,66 @@ int Trees::minDepth(TreeNode* root)
 	return depth;
 }
 // recursive
-int Trees::minDepth1(TreeNode* root)
+int Trees::minDepth_r(TreeNode* root)
 {
 	if (!root) return 0;
 	if (!root->left && !root->right) return 1;
 	int lDepth = INT_MAX, rDepth = INT_MAX;
-	if (root->left) lDepth = minDepth1(root->left) + 1;
-	if (root->right) rDepth = minDepth1(root->right) + 1;
+	if (root->left) lDepth = minDepth_r(root->left) + 1;
+	if (root->right) rDepth = minDepth_r(root->right) + 1;
 	return min(lDepth, rDepth);
+}
+
+//Given a binary tree, return all root - to - leaf paths.
+// recursive
+vector<string> Trees::binaryTreePaths_r(TreeNode* root)
+{
+	vector<string> vec;
+	if (!root) return vec; 
+	if (!root->left && !root->right)
+	{
+		vec.push_back(to_string(root->val));
+		return vec;
+	}
+	if (root->left)
+	{
+		for (auto s : binaryTreePaths_r(root->left)) {
+			vec.push_back(to_string(root->val) + "->" + s);
+		}
+	}
+	if (root->right)
+	{
+		for (auto s : binaryTreePaths_r(root->right)) {
+			vec.push_back(to_string(root->val) + "->" + s);
+		}
+	}
+	return vec;
+}
+// iterative
+vector<string> Trees::binaryTreePaths_i(TreeNode* root)
+{
+	vector<string> vec;
+	if (!root) return vec;
+	stack<TreeNode*> nodes;
+	stack<string> paths;
+	nodes.push(root), paths.push(to_string(root->val));
+	while (!nodes.empty())
+	{
+		TreeNode *node = nodes.top();
+		nodes.pop();
+		string path = paths.top();
+		paths.pop();
+		if (!node->left && !node->right) vec.push_back(path);
+		if (node->right)
+		{
+			nodes.push(node->right);
+			paths.push(path + "->" + to_string(node->right->val));
+		}
+		if (node->left)
+		{
+			nodes.push(node->left);
+			paths.push(path + "->" + to_string(node->left->val));
+		}
+	}	
+	return vec;
 }

@@ -113,7 +113,7 @@ int Array::shortestDistance(vector<string>& words, string word1, string word2)
 // find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j]
 // and the difference between i and j is at most k.
 // S2: hash
-bool Array::containsNearbyDuplicate2(vector<int>& nums, int k)
+bool Array::containsNearbyDuplicate_s2(vector<int>& nums, int k)
 {
 	unordered_map<int, int> hash;
 	int cur = 0;
@@ -125,7 +125,7 @@ bool Array::containsNearbyDuplicate2(vector<int>& nums, int k)
 	return false;
 }
 // S1: Time consuming solution
-bool Array::containsNearbyDuplicate1(vector<int>& nums, int k)
+bool Array::containsNearbyDuplicate_s1(vector<int>& nums, int k)
 {
 	k = k > nums.size() ? nums.size() : k;
 	if (0 == k) return false;
@@ -219,7 +219,7 @@ vector< vector<int> > Array::generatePascals(int numRows)
 //Rotate an array of n elements to the right by k steps.
 //For example, with n = 7 and k = 3, the array[1, 2, 3, 4, 5, 6, 7] is rotated to[5, 6, 7, 1, 2, 3, 4].
 // S4: Swap the last k elements with the first k elements.
-void Array::rotate4(vector<int>& nums, int k)
+void Array::rotate_i3(vector<int>& nums, int k)
 {
 	int n = nums.size();
 	if (!n || k%n == 0) return;
@@ -233,7 +233,7 @@ void Array::rotate4(vector<int>& nums, int k)
 	}
 }
 // S3: Start from one element and keep rotating until we have rotated n different elements.
-void Array::rotate3(vector<int>& nums, int k) 
+void Array::rotate_i2(vector<int>& nums, int k) 
 {
 	int sz, n;
 	sz = n = nums.size();
@@ -261,7 +261,7 @@ void reverse(vector<int>& nums, int l, int r)
 		nums[r] = temp;
 	}
 }
-void Array::rotate2(vector<int>& nums, int k)
+void Array::rotate_r(vector<int>& nums, int k)
 {
 	int n = nums.size();
 	if (!n) return;
@@ -271,7 +271,7 @@ void Array::rotate2(vector<int>& nums, int k)
 	reverse(nums, 0, n);
 }
 // S1: Use a copy
-void Array::rotate1(vector<int>& nums, int k)
+void Array::rotate_i1(vector<int>& nums, int k)
 {
 	int len = nums.size();
 	if (k <= 0) return;

@@ -12,12 +12,14 @@ LinkList::~LinkList()
 {
 }
 
-ListNode* LinkList::genList(int len) {
+ListNode* LinkList::genList(int len) 
+{
 	if (len == 0) return NULL;
 	ListNode *head = new ListNode(1);
 	if (len == 1) return head;
 	ListNode *cur = head;
-	for (int i = 2; i <= len; i++) {
+	for (int i = 2; i <= len; i++) 
+	{
 		ListNode *tmp = new ListNode(i);
 		cur->next = tmp;
 		cur = tmp;
@@ -25,7 +27,8 @@ ListNode* LinkList::genList(int len) {
 	return head;
 }
 
-void LinkList::printList(ListNode* head) {
+void LinkList::printList(ListNode* head) 
+{
 	if (head == NULL) printf("NULL List!\n");
 	while (head != NULL)
 	{
@@ -39,7 +42,8 @@ void LinkList::printList(ListNode* head) {
 // 要求：O(1) space, O(n) time
 // 算法：通过改变指针，生成两个链表，分别是odd，even，然后连接起来即可。
 // 如， [1,2,3,4,5], odd: [1,3,5], even: [2,4], => result: odd->even
-ListNode* LinkList::oddEvenList(ListNode* head) {
+ListNode* LinkList::oddEvenList(ListNode* head) 
+{
 	if (head == NULL || head->next == NULL) return head;
 	ListNode* odd = head;
 	ListNode* even = head->next;
@@ -56,7 +60,8 @@ ListNode* LinkList::oddEvenList(ListNode* head) {
 }
 
 // 反转一个链表
-ListNode* LinkList::reverseList(ListNode* head) {
+ListNode* LinkList::reverseList(ListNode* head) 
+{
 	if (head == NULL) return head;
 	ListNode* pre = NULL;
 	ListNode* cur = head;
@@ -79,19 +84,23 @@ ListNode* LinkList::reverseList(ListNode* head) {
 //	case2: m > 1 从m个开始反转，然后 Node(m - 1)->Node(n)， Node(m)->Node(n + 1);
 // 算法2：two-loop
 //	先定位到 m - 1，然后开始反转。考虑到 m = 1的情况，创建一个head节点。
-ListNode* LinkList::reverseBetween1(ListNode* head, int m, int n) {
+ListNode* LinkList::reverseBetween_1(ListNode* head, int m, int n) 
+{
 	if (m == n) return head;
 	// 1： one-loop
 	int cnt = 1;
 	ListNode *cur = head, *left = NULL, *tail = NULL, *pre = NULL;
-	while (cnt <= n) {
-		if (m == 1 && cnt == 1) { // case1: m = 1
+	while (cnt <= n) 
+	{
+		if (m == 1 && cnt == 1) 
+		{ // case1: m = 1
 			tail = cur;
 			pre = tail;
 			cur = cur->next;
 			cnt++;
 		}
-		else if (cnt == m - 1 ) {// case2: m > 1
+		else if (cnt == m - 1 ) 
+		{// case2: m > 1
 			left = cur;
 			tail = cur->next;
 			pre = tail;
@@ -99,22 +108,26 @@ ListNode* LinkList::reverseBetween1(ListNode* head, int m, int n) {
 			cnt ++;
 		}
 		// 反转
-		if (cnt > m) { // 开始反转
+		if (cnt > m) 
+		{ // 开始反转
 			ListNode* tmp = cur->next;
 			cur->next = pre;
 			pre = cur;
 			cur = tmp;
 			cnt++;
 		}
-		else { // 跳过不需反转元素
+		else 
+		{ // 跳过不需反转元素
 			cnt++;
 			cur = cur->next;
 		}
 	}
-	if (m == 1) {
+	if (m == 1) 
+	{
 		head = pre; // head = Node(n)
 	}
-	else {
+	else 
+	{
 		left->next = pre; // Node(m - 1)->Node(n)
 	}
 	tail->next = cur; // Node(m)->Node(n + 1)
@@ -122,16 +135,20 @@ ListNode* LinkList::reverseBetween1(ListNode* head, int m, int n) {
 }
 
 // 2: two-loop
-ListNode* LinkList::reverseBetween2(ListNode* head, int m, int n) {
+ListNode* LinkList::reverseBetween_2(ListNode* head, int m, int n) 
+{
 	if (m == n) return head;
 	ListNode* head_new = new ListNode(0);
 	head_new->next = head;
 	ListNode *left = head_new, *pre, *cur;
 	for (int i = 0; i < m - 1; i++)
+	{
 		left = left->next; //skip
+	}
 	pre = left->next;
 	cur = pre->next;
-	for (int i = 0; i < n - m; i++) { //reverse
+	for (int i = 0; i < n - m; i++) 
+	{ //reverse
 		ListNode* tmp = cur->next;
 		cur->next = pre;
 		pre = cur;
@@ -151,20 +168,23 @@ ListNode* LinkList::reverseBetween2(ListNode* head, int m, int n) {
 // Note:
 //	Given n will always be valid.
 //	Try to do this in one pass.
-ListNode* LinkList::removeNthFromEnd(ListNode* head, int n) {
+ListNode* LinkList::removeNthFromEnd(ListNode* head, int n) 
+{
 	if (head->next == NULL || head == NULL) return NULL;
 	ListNode *pre = NULL, *target = head, *cur = head;
 	while (n-- > 0)
 	{
 		cur = cur->next;
 	}
-	if (cur == NULL) { // delete head
+	if (cur == NULL) 
+	{ // delete head
 		ListNode *tmp = head;
 		head = head->next;
 		delete tmp;
 		return head;
 	}
-	while (cur != NULL) {
+	while (cur != NULL) 
+	{
 		pre = target;
 		target = target->next;
 		cur = cur->next;
@@ -182,19 +202,23 @@ ListNode* LinkList::removeNthFromEnd(ListNode* head, int n) {
 //	new a node，so all case can be treated as "inner delete"
 // S2:
 //	two pointers, pre and cur. use a while loop to deal with "head delete".
-ListNode* LinkList::removeElements(ListNode* head, int val) {
+ListNode* LinkList::removeElements(ListNode* head, int val) 
+{
 	//S1
 	/*ListNode* head_new = new ListNode(0);
 	head_new->next = head;
 	ListNode *pre = head_new, *cur = head;
-	while (cur != NULL) {
-		if (cur->val == val) {
+	while (cur != NULL) 
+	{
+		if (cur->val == val) 
+		{
 			ListNode* tmp = cur;
 			pre->next = cur->next;
 			cur = cur->next;
 			delete tmp; // free space
 		}
-		else {
+		else 
+		{
 			pre = cur;
 			cur = cur->next;
 		}
@@ -208,13 +232,15 @@ ListNode* LinkList::removeElements(ListNode* head, int val) {
 	ListNode *pre = head, *cur = head->next;
 	while (cur != NULL)
 	{
-		if (cur->val == val) {
+		if (cur->val == val) 
+		{
 			ListNode* tmp = cur;
 			pre->next = cur->next;
 			cur = cur->next;
 			delete tmp; // free space
 		}
-		else {
+		else 
+		{
 			pre = cur;
 			cur = cur->next;
 		}
@@ -223,17 +249,21 @@ ListNode* LinkList::removeElements(ListNode* head, int val) {
 }
 
 // Given a sorted linked list, delete all duplicates such that each element appear only once.
-ListNode* LinkList::deleteDuplicates(ListNode* head) {
+ListNode* LinkList::deleteDuplicates(ListNode* head) 
+{
 	if (head == NULL) return NULL;
 	ListNode *pre = head, *cur = head->next;
-	while (cur != NULL) {
-		if (cur->val == pre->val) {
+	while (cur != NULL) 
+	{
+		if (cur->val == pre->val) 
+		{
 			ListNode* tmp = cur;
 			pre->next = cur->next;
 			cur = cur->next;
 			delete tmp; // free space
 		}
-		else {
+		else 
+		{
 			pre = cur;
 			cur = cur->next;
 		}
@@ -242,16 +272,19 @@ ListNode* LinkList::deleteDuplicates(ListNode* head) {
 }
 // Merge two sorted linked lists and return it as a new list. 
 // The new list should be made by splicing together the nodes of the first two lists.
-ListNode* LinkList::mergeTwoLists1(ListNode* l1, ListNode* l2) {
+ListNode* LinkList::mergeTwoLists_i(ListNode* l1, ListNode* l2) 
+{
 	ListNode *head = new ListNode(0);
 	ListNode *cur = head;
 	while (l1 && l2)
 	{
-		if (l1->val <= l2->val) {
+		if (l1->val <= l2->val) 
+		{
 			cur->next = l1;
 			l1 = l1->next;
 		}
-		else {
+		else 
+		{
 			cur->next = l2;
 			l2 = l2->next;
 		}
@@ -267,7 +300,8 @@ ListNode* LinkList::mergeTwoLists1(ListNode* l1, ListNode* l2) {
 	// no fake head
 	/*if (!l1) return l2;
 	if (!l2) return l1;
-	if(l1->val > l2->val){
+	if(l1->val > l2->val)
+	{
 	    ListNode *temp = l1;
 	    l1 = l2, l2 = temp;
 	}
@@ -276,11 +310,13 @@ ListNode* LinkList::mergeTwoLists1(ListNode* l1, ListNode* l2) {
 	l1 = l1->next;
 	while (l1 && l2)
 	{
-		if (l1->val <= l2->val) {
+		if (l1->val <= l2->val) 
+		{
 			cur->next = l1;
 			l1 = l1->next;
 	    }
-		else {
+		else 
+		{
 		    cur->next = l2;
 		l2 = l2->next;
 	    }
@@ -292,15 +328,18 @@ ListNode* LinkList::mergeTwoLists1(ListNode* l1, ListNode* l2) {
 }
 
 //recursive
-ListNode* LinkList::mergeTwoLists2(ListNode* l1, ListNode* l2) {
+ListNode* LinkList::mergeTwoLists_r(ListNode* l1, ListNode* l2) 
+{
 	if (!l1) return l2;
 	if (!l2) return l1;
-	if (l1->val <= l2->val) {
-		l1->next = mergeTwoLists2(l1->next, l2);
+	if (l1->val <= l2->val) 
+	{
+		l1->next = mergeTwoLists_r(l1->next, l2);
 		return l1;
 	}
-	else {
-		l2->next = mergeTwoLists2(l1, l2->next);
+	else 
+	{
+		l2->next = mergeTwoLists_r(l1, l2->next);
 		return l2;
 	}
 }
@@ -308,7 +347,8 @@ ListNode* LinkList::mergeTwoLists2(ListNode* l1, ListNode* l2) {
 // Write a function to delete a node (except the tail) in a singly linked list,
 // given only access to that node.
 // S: delete the node->next!
-void LinkList::deleteNode(ListNode* node) {
+void LinkList::deleteNode(ListNode* node)
+{
 	ListNode *next = node->next;
 	node->val = next->val;
 	node->next = next->next;
@@ -320,10 +360,12 @@ void LinkList::deleteNode(ListNode* node) {
 // S: reverse halve of list, then campare
 //	two pointers, one fast, the other slow. two cases, odd and even.
 //	the fast pointer faster than slow pointer two steps
-bool LinkList::isPalindrome(ListNode* head) {
+bool LinkList::isPalindrome(ListNode* head) 
+{
 	if (head == NULL || head->next == NULL) return true;
 	ListNode *slow = head, *fast = head, *pre = NULL;
-	while (fast && fast->next) { // reverse half
+	while (fast && fast->next) 
+	{ // reverse half
 		fast = fast->next->next;
 		ListNode *next = slow->next;
 		slow->next = pre;
@@ -331,7 +373,8 @@ bool LinkList::isPalindrome(ListNode* head) {
 		slow = next;
 	}
 	if (fast) slow = slow->next; // odd case
-	while (pre && slow) { // compare
+	while (pre && slow) 
+	{ // compare
 		if (pre->val != slow->val) return false;
 		pre = pre->next;
 		slow = slow->next;
@@ -346,7 +389,8 @@ bool LinkList::isPalindrome(ListNode* head) {
 // - The linked lists must retain their original structure after the function returns.
 // - You may assume there are no cycles anywhere in the entire linked structure.
 // - Your code should preferably run in O(n) time and use only O(1) memory.
-ListNode* LinkList::getIntersectionNode(ListNode *headA, ListNode *headB) {
+ListNode* LinkList::getIntersectionNode(ListNode *headA, ListNode *headB) 
+{
 	if (headA == NULL || headB == NULL) return NULL;
 	ListNode *curA = headA, *curB = headB;
 	while (curA && curB)
@@ -366,16 +410,20 @@ ListNode* LinkList::getIntersectionNode(ListNode *headA, ListNode *headB) {
 
 // Sort a linked list in O(n log n) time using constant space complexity.
 // S1: not O(n log n) time
-ListNode* LinkList::sortList1(ListNode* head) {
+ListNode* LinkList::sortList_i(ListNode* head) 
+{
 	if (head == NULL) return NULL;
 	ListNode *head_fake = new ListNode(0);
 	head_fake->next = head;
 	ListNode *front = head->next, *mid = head, *back = head_fake;
 	while (front != NULL)
 	{
-		if (front->val < mid->val) {
-			while (back != mid) {
-				if (front->val <= back->next->val) {
+		if (front->val < mid->val) 
+		{
+			while (back != mid) 
+			{
+				if (front->val <= back->next->val) 
+				{
 					ListNode *back_next = back->next, *front_next = front->next;
 					back->next = front;
 					mid->next = front->next;
@@ -385,12 +433,14 @@ ListNode* LinkList::sortList1(ListNode* head) {
 					back = head_fake; 
 					break;
 				}
-				else {
+				else 
+				{
 					back = back->next;
 				}
 			}
 		}
-		else {
+		else 
+		{
 			front = front->next;
 			mid = mid->next;
 		}
@@ -401,16 +451,19 @@ ListNode* LinkList::sortList1(ListNode* head) {
 }
 
 // merge
-ListNode* merge(ListNode *head1, ListNode* head2) {
+ListNode* merge(ListNode *head1, ListNode* head2) 
+{
 	ListNode *fake = new ListNode(0);
 	ListNode *cur = fake;
 	while (head1 || head2)
 	{
-		if (head1 && (!head2 || head1->val <= head2->val)) {
+		if (head1 && (!head2 || head1->val <= head2->val)) 
+		{
 			cur = cur->next = head1;
 			head1 = head1->next;
 		}
-		if (head2 && (!head1 || head2->val < head1->val)) {
+		if (head2 && (!head1 || head2->val < head1->val)) 
+		{
 			cur = cur->next = head2;
 			head2 = head2->next;
 		}
@@ -421,27 +474,32 @@ ListNode* merge(ListNode *head1, ListNode* head2) {
 	return head;
 }
 // merge sort, O(1) space?
-ListNode* LinkList::sortList2(ListNode* head) {
+ListNode* LinkList::sortList_r(ListNode* head) 
+{
 	if (!head || !head->next) return head;
 	ListNode *slow = head, *fast = head->next;
-	while (fast && fast->next) { // to find middle node
+	while (fast && fast->next) 
+	{ // to find middle node
 		fast = fast->next->next;
 		slow = slow->next;
 	}
 	ListNode *head2 = slow->next; // head2 is the start of 2nd half of the list
 	slow->next = NULL; // split! now head is the start of 1st half of the list
-	return merge(sortList2(head), sortList2(head2));
+	return merge(sortList_r(head), sortList_r(head2));
 }
 
 
 // Given a singly linked list where elements are sorted in ascending(升序) order, convert it to a height balanced BST.
-TreeNode* LinkList::sortedListToBST(ListNode* head) {
+TreeNode* LinkList::sortedListToBST(ListNode* head) 
+{
 	if (!head) return NULL;
-	if (!head->next) {
+	if (!head->next) 
+	{
 		return new TreeNode(head->val);
 	}
 	ListNode *fast = head->next->next, *slow = head;
-	while (fast && fast->next) { // find middle node
+	while (fast && fast->next) 
+	{ // find middle node
 		fast = fast->next->next;
 		slow = slow->next;
 	}

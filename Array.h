@@ -18,15 +18,15 @@ public:
 	int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid); // #63
 	int uniquePaths(int m, int n); // #62
 	int shortestDistance(vector<string>& words, string word1, string word2); // #243
-	bool containsNearbyDuplicate2(vector<int>& nums, int k); // #219
-	bool containsNearbyDuplicate1(vector<int>& nums, int k); // #219
+	bool containsNearbyDuplicate_s2(vector<int>& nums, int k); // #219 solution 2
+	bool containsNearbyDuplicate_s1(vector<int>& nums, int k); // #219 solution 1
 	int majorityElement(vector<int>& nums); // #169
 	vector<int> getPascalsRow(int rowIndex); // #119
 	vector<vector<int>> generatePascals(int numRows); // #118
-	void rotate4(vector<int>& nums, int k); // #189
-	void rotate3(vector<int>& nums, int k); // #189
-	void rotate2(vector<int>& nums, int k); // #189
-	void rotate1(vector<int>& nums, int k); // #189
+	void rotate_r(vector<int>& nums, int k); // #189 recursive
+	void rotate_i3(vector<int>& nums, int k); // #189 iterative 3
+	void rotate_i2(vector<int>& nums, int k); // #189 iterative 2
+	void rotate_i1(vector<int>& nums, int k); // #189 iterative 1
 	bool containsDuplicate(vector<int>& nums); // #217
 	void moveZeroes(vector<int>& nums); // #283
 	int removeElement(arr& nums, int val); // #27

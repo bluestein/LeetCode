@@ -1,7 +1,7 @@
 #pragma once
 #include <queue>
 #include <stack>
-#include "Structs.h"
+#include "Nodes.h"
 using namespace std;
 
 

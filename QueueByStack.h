@@ -18,14 +18,14 @@ public:
 	bool empty(void);
 
 	/*************solution2*************/
-
+	// X means Upgrade
 	// Push element x to the back of queue.
-	void push1(int x);
+	void pushX(int x);
 	// Removes the element from in front of queue.
-	void pop1(void);
+	void popX(void);
 	// Get the front element.
-	int peek1(void);
+	int peekX(void);
 	// Return whether the queue is empty.
-	bool empty1(void);
+	bool emptyX(void);
 };
 

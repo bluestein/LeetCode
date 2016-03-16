@@ -6,7 +6,7 @@
 // Integers in each row are sorted in ascending from left to right.
 // Integers in each column are sorted in ascending from top to bottom.
 // linear search: from up right corner || bottom left corner
-bool DivideConquer::searchMatrix(vector<vector<int>> matrix, int target)
+bool DivideConquer::searchMatrix_i(vector<vector<int>> matrix, int target)
 {
 	if (!matrix.size() || !matrix[0].size()) return false;
 	int row = 0, col = matrix[0].size() - 1;
@@ -18,7 +18,7 @@ bool DivideConquer::searchMatrix(vector<vector<int>> matrix, int target)
 	return false;
 }
 // divide and conquer
-bool DivideConquer::searchMatrix2(vector<vector<int>> matrix, int target)
+bool DivideConquer::searchMatrix_r(vector<vector<int>> matrix, int target)
 {
 	if (!matrix.size() || !matrix[0].size()) return false;
 	if (matrix.size() == 1 && matrix[0].size() == 1) return matrix[0][0] == target;

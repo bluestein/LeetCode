@@ -15,6 +15,7 @@
 #include <iostream>
 using namespace std;
 
+void trees_test();
 void BSTIterator_test();
 void strings_test();
 void divedeConquer_test();
@@ -27,17 +28,37 @@ void test();
 
 int main()
 {
+	trees_test();
 	//divedeConquer_test(); 
-	strings_test();
+	//strings_test();
 	//math_test();
 	//BSTIterator_test();
     return 0;
 }
 
+void trees_test()
+{
+	Trees tree;
+	vector<int> nums = { 5,2,7,0,3,6,9,0,0,0,0,0,10 };
+	TreeNode* root = Trees::BuildHeap_i(nums); 
+	
+	BSTIterator i = BSTIterator(root);
+	vector<string> vec_r = tree.binaryTreePaths_r(root);
+	for (auto str : vec_r)
+	{
+		cout << str << endl;
+	}
+	cout << endl;
+	vector<string> vec_i = tree.binaryTreePaths_i(root);
+	for (auto str : vec_i)
+	{
+		cout << str << endl;
+	}
+}
 void BSTIterator_test()
 {
 	vector<int> nums = { 5,2,7,0,3,6,9,0,0,0,0,0,10 }; 
-	TreeNode* root = Trees::BuildHeap(nums);
+	TreeNode* root = Trees::BuildHeap_i(nums);
 	/*int len = nums.size() - 1;
 	TreeNode* root = Trees::BuildHeap(nums, 0, len);*/
 
@@ -64,6 +85,11 @@ void strings_test()
 	cout << s.isIsomorphic("abbc", "accb") << endl;
 	cout << s.getHint("9999", "9993") << endl;
 	cout << s.countAndSay(5) << endl;
+
+	string strs[] = { "","ab", "abd" };
+	vector<string> svec(strs, strs + 3);
+	cout << s.longestCommonPrefix(svec) << endl;
+	
 }
 void divedeConquer_test()
 {
@@ -75,8 +101,8 @@ void divedeConquer_test()
 	matrix.push_back(vector<int>(arr1, arr1 + 5));
 	matrix.push_back(vector<int>(arr2, arr2 + 5));
 	matrix.push_back(vector<int>(arr3, arr3 + 5));
-	cout << divide.searchMatrix(matrix, 22) << endl;
-	cout << divide.searchMatrix2(matrix, 1) << endl;
+	cout << divide.searchMatrix_i(matrix, 22) << endl;
+	cout << divide.searchMatrix_r(matrix, 1) << endl;
 }
 
 void minStack_test() 
@@ -97,10 +123,10 @@ void queueByStack_test()
 	que.pop();
 	cout << que.peek() << endl;
 
-	que1.push1(1);
-	que1.push1(2);
-	que1.pop1();
-	cout << que1.peek1() << endl;
+	que1.pushX(1);
+	que1.pushX(2);
+	que1.popX();
+	cout << que1.peekX() << endl;
 }
 
 void array_test() 
@@ -156,10 +182,10 @@ void list_test()
 
 	cout << "Reverse between " << endl;
 	head = list.genList(10); // re-generate
-	list.printList(list.reverseBetween1(head, 1, 9));
+	list.printList(list.reverseBetween_1(head, 1, 9));
 	cout << endl;
 	head = list.genList(10);
-	list.printList(list.reverseBetween2(head, 1, 9));
+	list.printList(list.reverseBetween_2(head, 1, 9));
 
 	cout << "Remove Nth node from end" << endl;
 	head = list.genList(4); // re-generate
@@ -175,7 +201,7 @@ void list_test()
 
 	cout << "Merge two list" << endl;
 	ListNode *l1 = list.genList(5), *l2 = list.genList(5);
-	list.printList(list.mergeTwoLists2(l1, l2));
+	list.printList(list.mergeTwoLists_r(l1, l2));
 
 	cout << "Delete node" << endl;
 	head = list.genList(5); // re-generate
@@ -196,6 +222,6 @@ void list_test()
 	cout << "Sort List" << endl;
 	ListNode *reversed_list = list.reverseList(head);
 	//list.printList(list.sortList1(reversed_list));
-	list.printList(list.sortList2(reversed_list));
+	list.printList(list.sortList_r(reversed_list));
 }
 
