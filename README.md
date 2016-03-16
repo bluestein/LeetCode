@@ -66,7 +66,9 @@ The following is classified according to its tag. For example,  [problem \#328][
 - \#172 int trailingZeroes(int n)
 - \#36 bool isValidSudoku(vector<vector<char>>& board)
 - \#223 int computeArea(int A, int B, int C, int D, int E, int F, int G, int H)
-- #190 uint32_t reverseBits(uint32_t n)
+- \#190 uint32_t reverseBits(uint32_t n)
+- \#204 int countPrimes_sqrt(int n)
+- \#204 int countPrimes_SoE(int n) // Sieve of Eratosthenes(埃氏筛)
 
 ##Stack
 
@@ -90,6 +92,9 @@ The following is classified according to its tag. For example,  [problem \#328][
 - \#205 bool isIsomorphic(string s, string t)
 - \#229 string getHint(string secret, string guess)
 - \#38 string countAndSay(int n)
+- \#14 string longestCommonPrefix(vector<string>& strs)
+- \#67 string addBinary(string a, string b)
+- \#28 int strStr(string haystack, string needle)
 
 ##Trees
 
