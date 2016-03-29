@@ -120,7 +120,7 @@ The following is classified according to its tag. For example,  [problem \#328][
 
 ##Some Explanation
 
-###\#160 Get Intersection Node (*Tag: Array*)
+###\#160 Get Intersection Node (array)
 
 We set 2 pointers "curA" and "curB" to point to linked-list headA and headB. Then set the
 	
@@ -147,8 +147,26 @@ So we have the
 [#distance-from-curB-to-meet-point] ==  [#distance-from-curA-to-meet-point]
 ```
 
+
 We just move the curA and curB at the same time, then we get the meeting point .
 Thanks to [RainbowSecret][rainbowSecret].
+
+
+### \#5 Longest Palindromic Substring (string) ###
+
+LeetCode: [longest palindromic substring](https://leetcode.com/problems/longest-palindromic-substring)
+
+There are about five different solutions. Details see
+
+in Chinese:
+
+[Longest palindromic substring][LPS]. 
+
+Or in English:
+
+1. [Longest palindromic substring part I][LPS-i]
+2. [Longest palindromic substring part II][LPS-ii]
+
 
 [tag-list]: #linked-list
 [tag-array]: #array
@@ -161,3 +179,6 @@ Thanks to [RainbowSecret][rainbowSecret].
 [explanation]: #some-explanation
 [problem-328]: https://leetcode.com/problems/odd-even-linked-list/
 [rainbowSecret]: https://leetcode.com/discuss/77946/recommend-beginners-implementation-detailed-explaination
+[LPS]: http://bluestein.github.io/2016/03/algorithm-LPS/
+[LPS-i]: http://articles.leetcode.com/longest-palindromic-substring-part-i/
+[LPS-ii]: http://articles.leetcode.com/longest-palindromic-substring-part-ii/
