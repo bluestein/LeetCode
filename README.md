@@ -28,6 +28,7 @@ The following is classified according to its tag. For example,  [problem \#328][
 - \#148 ListNode\* sortList1(ListNode\* head)
 - \#148 ListNode\* sortList2(ListNode\* head)
 - \#109 TreeNode\* sortedListToBST(ListNode\* head)
+- \#2 ListNode\* addTwoNumbers(ListNode\* l1, ListNode\* l2)
 
 ##Array
 
@@ -49,6 +50,7 @@ The following is classified according to its tag. For example,  [problem \#328][
 - \#252 bool canAttendMeetings(vector&lt;Interval&gt;& intervals)
 - \#62 int uniquePaths(int m, int n)
 - \#63 int uniquePathsWithObstacles(vector&lt;vector&lt;int&gt;&gt;& obstacleGrid)
+- \#4 double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2)
 
 
 ##Math
@@ -95,6 +97,10 @@ The following is classified according to its tag. For example,  [problem \#328][
 - \#14 string longestCommonPrefix(vector&lt;string&gt;& strs)
 - \#67 string addBinary(string a, string b)
 - \#28 int strStr(string haystack, string needle)
+- \#3 int lengthOfLongestSubstring(string s)
+- \#5 string longestPalindrome_DP1(string s)
+- \#5 string longestPalindrome_DP2(string s)
+- \#5 string longestPalindrome_Manachers(string s)
 
 ##Trees
 

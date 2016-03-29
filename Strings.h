@@ -22,5 +22,5 @@ public:
 	int lengthOfLongestSubstring(string s);  // #3
 	string longestPalindrome_DP1(string s);  // #5
 	string longestPalindrome_DP2(string s);  // #5
-	string Strings::longestPalindrome_Manachers(string s);  // #5
+	string longestPalindrome_Manachers(string s);  // #5
 };
