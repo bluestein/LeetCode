@@ -193,3 +193,139 @@ int Strings::strStr(string haystack, string needle)
 	}
 	return -1;
 }
+
+//Given a string, find the length of the longest substring without repeating characters.
+//For example, the longest substring without repeating letters for "abcabcbb" is "abc", which the length is 3. 
+//For "bbbbb" the longest substring is "b", with the length of 1.
+//S: scan left to right, record the location of the last occurrence
+int Strings::lengthOfLongestSubstring(string s)
+{
+	const int ASCII_MAX = 256;
+	vector<int> last(ASCII_MAX, -1);  // record the last occurrence
+	int start = 0, max_len = 0;
+	for (int i = 0; i < s.size(); i++)
+	{
+		if (last[s[i]] >= start)
+		{
+			max_len = max(i - start, max_len);
+			start = last[s[i]] + 1;
+		}
+		last[s[i]] = i;
+	}
+	return max((int)s.size() - start, max_len);  // case "abc"
+}
+
+//Given a string S, find the longest palindromic substring in S.
+//You may assume that the maximum length of S is 1000,
+//and there exists one unique longest palindromic substring.
+// S1-1: DP, O(n^2) time, O(n^2) space
+//            true                             ,i = j
+//f[i][j] = { s[i] = s[j]                      ,j = i + 1
+//            s[i] = s[j] and f(i + 1, j - 1)  ,j > i + 1
+string Strings::longestPalindrome_DP1(string s)
+{
+	const int n = s.size();
+	bool *f = new bool[n * n];
+	for (int i = 0; i < n * n; i++)
+	{
+		f[i] = false;
+	}
+	// vector<vector<bool>> f(n, vector<bool>(n, false)); // time exceeded
+	int max_len = 1, start = 0;
+	for (int i = 0; i < s.size(); i++)
+	{
+		f[i * n + i] = true; // f[i][i]
+		for (int j = 0; j < i; j++)
+		{
+			// f[j][i] = (s[j] == s[i] && (i - j < 2 || f[j + 1][i - 1]));
+			f[j * n + i] = (s[j] == s[i] && (i - j < 2 || f[(j + 1) * n + i - 1]));
+			if (f[j * n + i] && max_len < (i - j + 1))
+			{
+				max_len = i - j + 1;
+				start = j;
+			}
+		}
+	}
+	delete[] f;
+	f = 0;
+	return s.substr(start, max_len);
+}
+// S1-2: DP, O(n^2) time, O(1) space
+string Strings::longestPalindrome_DP2(string s)
+{
+	const int n = s.size();
+	if (n == 0) return string();
+	string longest = s.substr(0, 1);  // single char itself is a palindrome
+	for (int i = 0; i < n - 1; i++)
+	{
+		string s1 = expandCenter(s, i, i);
+		string s2 = expandCenter(s, i, i + 1);
+		if (s1.size() > longest.size()) longest = s1;
+		if (s2.size() > longest.size()) longest = s2;
+	}
+	return longest;
+}
+string Strings::expandCenter(string s, int l, int r)
+{
+	const int n = s.size();
+	while (l >= 0 && r <= n - 1 && s[l] == s[r])
+	{
+		l--;
+		r++;
+	}
+	return s.substr(l + 1, r - l - 1);
+}
+
+// S2: Manacher's Algorithm, O(n) time, O(n) space
+string Strings::longestPalindrome_Manachers(string s)
+{
+	string T = preProcess(s);
+	const int n = T.size();
+	int *P = new int[n];
+	int C = 0, R = 0;
+	for (int i = 1; i < n - 1; i++)
+	{
+		int i_mirror = 2 * C - i;  // equals to i' = C - (i - C)
+		P[i] = (R > i) ? min(R - i, P[i_mirror]) : 0;
+
+		// Attempt to expand palindrome centered at i
+		while (T[i + 1 + P[i]] == T[i - 1 - P[i]])
+		{
+			P[i]++;
+		}
+
+		// If palindrome centered at i expand past R,
+		// adjust center based on expanded palindrome
+		if (i + P[i] > R)
+		{
+			C = i;
+			R = i + P[i];
+		}
+	}
+
+	// find the maximun element in P
+	int max_len = 0, center_index = 0;
+	for (int i = 1; i < n - 1; i++)
+	{
+		if (P[i] > max_len)
+		{
+			max_len = P[i];
+			center_index = i;
+		}
+	}
+	delete[] P;
+	P = 0;
+	return s.substr((center_index - 1 - max_len) / 2, max_len);
+}
+// Transform S into T.
+// For example, S = "abba", T = "^#a#b#b#a#$".
+// ^ and $ signs are sentinels appended to each end to avoid bounds checking
+string Strings::preProcess(string s)
+{
+	int n = s.size();
+	if (n == 0) return "^$";
+	string ans = "^";
+	for (int i = 0; i < n; i++) ans += "#" + s.substr(i, 1);
+	ans += "#$";
+	return ans;
+}

@@ -25,13 +25,13 @@ void list_test();
 void array_test();
 void math_test();
 void test();
-
 int main()
 {
 	//trees_test();
 	//divedeConquer_test(); 
-	//strings_test();
-	math_test();
+	strings_test();
+	//math_test(); 
+	//array_test();
 	//BSTIterator_test();
     return 0;
 }
@@ -39,18 +39,26 @@ int main()
 void trees_test()
 {
 	Trees tree;
-	vector<int> nums = { 5,2,7,0,3,6,9,0,0,0,0,0,10 };
+	vector<int> nums = { 1,2,3,0,4,0,5 };
 	TreeNode* root = Trees::BuildHeap_i(nums); 
 	
-	BSTIterator i = BSTIterator(root);
+	
 	vector<string> vec_r = tree.binaryTreePaths_r(root);
 	for (auto str : vec_r)
 	{
 		cout << str << endl;
 	}
 	cout << endl;
-	vector<string> vec_i = tree.binaryTreePaths_i(root);
+	/*vector<string> vec_i = tree.binaryTreePaths_i(root);
 	for (auto str : vec_i)
+	{
+		cout << str << endl;
+	}*/
+
+	vector<int> inorder = { 2,4,1,3,5 }, preoder = { 1,2,4,3,5 };
+	TreeNode *pre_in = tree.buildTree(preoder, inorder);
+	vector<string> path = tree.binaryTreePaths_r(pre_in);
+	for (auto str : path)
 	{
 		cout << str << endl;
 	}
@@ -76,7 +84,7 @@ void BSTIterator_test()
 void strings_test()
 {
 	Strings s;
-	vector<string> v = s.generatePossibleNextMoves("++++");
+	/*vector<string> v = s.generatePossibleNextMoves("++++");
 	for (string str : v)
 	{
 		cout << str << endl;
@@ -90,8 +98,12 @@ void strings_test()
 	vector<string> svec(strs, strs + 3);
 	cout << s.longestCommonPrefix(svec) << endl;
 	cout << s.addBinary("1", "1") << endl;
-	cout << s.strStr("hello", "o") << endl;
+	cout << s.strStr("hello", "o") << endl;*/
 	
+	string str = "cabbaaadda";
+	cout << s.lengthOfLongestSubstring(str) << endl;
+	cout << s.longestPalindrome_DP1(str) << endl;
+	cout << s.longestPalindrome_DP2(str) << endl;
 }
 void divedeConquer_test()
 {
@@ -169,6 +181,9 @@ void math_test()
 		cout << math.countPrimes_sqrt(n) << endl;
 		cout << math.countPrimes_SoE(n) << endl;
 	}
+
+	vector<int> nums = { -1,2,3,-2,-1,4,3,2 };
+	vector<vector<int>> ans = math.threeSum(nums);
 }
 
 void test() 

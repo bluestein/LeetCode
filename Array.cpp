@@ -59,8 +59,8 @@ int Array::uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid)
 // A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
 // The robot can only move either down or right at any point in time.
 // The robot is trying to reach the bottom - right corner of the grid(marked 'Finish' in the diagram below).
-// 1 1 1  1
-// 1 2 3  4
+// 1 1 1 1
+// 1 2 3 4
 // 1 3 6 10
 // S: The state transition equation is: up[i][j] = up[i][j - 1] + up[i - 1][j]
 int Array::uniquePaths(int m, int n)
@@ -222,8 +222,8 @@ vector< vector<int> > Array::generatePascals(int numRows)
 void Array::rotate_i3(vector<int>& nums, int k)
 {
 	int n = nums.size();
-	if (!n || k%n == 0) return;
-	int first = 0, middle = n - k%n, last = n;
+	if (!n || k % n == 0) return;
+	int first = 0, middle = n - k % n, last = n;
 	int next = middle;
 	while (first != next) 
 	{
@@ -265,7 +265,7 @@ void Array::rotate_r(vector<int>& nums, int k)
 {
 	int n = nums.size();
 	if (!n) return;
-	k = k%n;
+	k = k % n;
 	reverse(nums, 0, n - k);
 	reverse(nums, n - k, n);
 	reverse(nums, 0, n);
@@ -342,4 +342,35 @@ int Array::removeElement(arr& nums, int val)
 			nums[i] = nums[j + 1];
 	}
 	return j + 1;
+}
+
+// There are two sorted arrays nums1 and nums2 of size m and n respectively. 
+// Find the median of the two sorted arrays. 
+// The overall run time complexity should be O(log (m+n)).
+// The median: https://en.wikipedia.org/wiki/Median
+double Array::findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2)
+{
+	const int m = nums1.size(), n = nums2.size();
+	const int total = m + n;
+	if (total & 1)
+		return find_kth(nums1.begin(), m, nums2.begin(), n, total / 2 + 1);
+	else
+		return (find_kth(nums1.begin(), m, nums2.begin(), n, total / 2)
+		+ find_kth(nums1.begin(), m, nums2.begin(), n, total / 2 + 1)) / 2.0;
+}
+
+int Array::find_kth(vector<int>::const_iterator a, int m, vector<int>::const_iterator b, int n, int k)
+{
+	if (m > n) return find_kth(b, n, a, m, k);
+	if (m == 0) return *(b + k - 1);
+	if (k == 1) return min(*a, *b);
+
+	// divide k into two parts
+	int ia = min(k / 2, m), ib = k - ia;
+	if (*(a + ia - 1) < *(b + ib - 1))
+		return find_kth(a + ia, m - ia, b, n, k - ia);
+	else if (*(a + ia - 1) > *(b + ib - 1))
+		return find_kth(a, m, b + ib, n - ib, k - ib);
+	else
+		return a[ia - 1];
 }

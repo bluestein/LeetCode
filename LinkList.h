@@ -23,5 +23,6 @@ public:
 	ListNode* sortList_i(ListNode* head); // #148 iterative
 	ListNode* sortList_r(ListNode* head); // #148 recursive
 	TreeNode* sortedListToBST(ListNode* head); // #109
+	ListNode* addTwoNumbers(ListNode* l1, ListNode* l2);  //#2
 };
 
