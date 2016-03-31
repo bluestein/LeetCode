@@ -11,6 +11,7 @@ class Math
 private:
 	bool isPrime(int n);
 public:
+	vector<vector<int>> threeSum(vector<int> &num); // #15
 	bool canWinNim(int n); // #292
 	int hammingWeight(uint32_t n); // #191
 	bool isPowerOfTwo(int n); // #231
@@ -25,5 +26,6 @@ public:
 	uint32_t reverseBits(uint32_t n); // #190
 	int countPrimes_sqrt(int n); // #204
 	int countPrimes_SoE(int n); // #204 Sieve of Eratosthenes(∞£ œ…∏)
+	int reverse(int x);  // #7
 };
 

@@ -66,11 +66,13 @@ The following is classified according to its tag. For example,  [problem \#328][
 - \#292 bool canWinNim(int n)
 - \#9 bool isPalindrome(int n)
 - \#172 int trailingZeroes(int n)
-- \#36 bool isValidSudoku(vector&lt;vector&lt;char&gt;&gt;& board)
+- \#36 bool isValidSudoku(vector&lt;vector&lt;char&gt;&gt; &board)
 - \#223 int computeArea(int A, int B, int C, int D, int E, int F, int G, int H)
 - \#190 uint32_t reverseBits(uint32_t n)
 - \#204 int countPrimes_sqrt(int n)
 - \#204 int countPrimes_SoE(int n) // Sieve of Eratosthenes(埃氏筛)
+- \#7 int reverse(int x)
+- \#15 vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt; &num)
 
 ##Stack
 
@@ -101,6 +103,8 @@ The following is classified according to its tag. For example,  [problem \#328][
 - \#5 string longestPalindrome_DP1(string s)
 - \#5 string longestPalindrome_DP2(string s)
 - \#5 string longestPalindrome_Manachers(string s)
+- \#6 string convertZigZag(string s, int numRows)
+- \#8 int myAtoi(string str)
 
 ##Trees
 

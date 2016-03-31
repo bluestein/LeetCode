@@ -23,4 +23,6 @@ public:
 	string longestPalindrome_DP1(string s);  // #5
 	string longestPalindrome_DP2(string s);  // #5
 	string longestPalindrome_Manachers(string s);  // #5
+	string convertZigZag(string s, int numRows);  // #6
+	int myAtoi(string str);  // #8
 };

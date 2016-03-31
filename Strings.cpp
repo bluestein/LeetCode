@@ -329,3 +329,62 @@ string Strings::preProcess(string s)
 	ans += "#$";
 	return ans;
 }
+
+//The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: 
+//(you may want to display this pattern in a fixed font for better legibility)
+//P   A   H   N
+//A P L S I I G
+//Y   I   R
+//And then read line by line : "PAHNAPLSIIGYIR"
+string Strings::convertZigZag(string s, int numRows)
+{
+	if (numRows == 1) return s;
+	int d = 2 * (numRows - 1);  // distance between pipes |/|/|
+	int len = s.size();
+	string ans;
+	for (int i = 0; i < numRows; i++)
+	{
+		for (int j = i; j < len; j += d)
+		{
+			ans.push_back(s[j]);
+			if (i > 0 && i < numRows - 1 && j + d - 2 * i < len)
+			{
+				ans.push_back(s[j + d - 2 * i]);  // character between pipes
+			}
+		}
+	}
+	return ans;
+}
+
+//Implement atoi to convert a string to an integer.
+// 2^31 - 1 = 2147483647
+int Strings::myAtoi(string str)
+{
+	if (str.empty()) return 0;
+	// skip space
+	int len = str.size(), cur = 0;
+	while (cur < len && str[cur] == ' ') cur++;
+	// negative or positive
+	bool is_negative = false;
+	if (str[cur] == '-') 
+	{
+		is_negative = true;
+		cur++;
+	}
+	else if (str[cur] == '+')
+	{
+		cur++;
+	}
+	// start converting
+	long long ans = 0;
+	for (; cur < len; cur++)
+	{
+		if (str[cur] > '9' || str[cur] < '0') break;
+		int num = str[cur] - '0';
+		ans = ans * 10 + (is_negative ? -num : num);
+		// check overflow
+		if (ans < INT32_MIN) return INT32_MIN;
+		if (ans > INT32_MAX) return INT32_MAX;
+	}
+	return ans;
+}
