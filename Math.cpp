@@ -31,7 +31,8 @@ vector<vector<int>> Math::threeSum(vector<int> &nums)
 				--k;
 				while (*k == *(k + 1) && j < k) --k;
 			}
-			else {
+			else 
+			{
 				ans.push_back({ *i, *j, *k });
 				++j;
 				--k;
@@ -339,7 +340,7 @@ int Math::countPrimes_SoE(int n)
 // Example2 : x = -123, return -321
 // consider cases: 1, negative; 2, overflow
 // 2^31 - 1 = 2147483647
-int reverse(int x)
+int Math::reverse(int x)
 {
 	long long r = 0;
 	long long t = x;
@@ -352,4 +353,28 @@ int reverse(int x)
 	r = is_negative ? -r : r;
 	if (r < INT32_MIN || r > INT32_MAX) r = 0;
 	return r;
+}
+
+//Given n non - negative integers a1, a2, ..., an, where each represents a point at coordinate(i, ai).
+//n vertical lines are drawn such that the two endpoints of line i is at(i, ai) and (i, 0).
+//Find two lines, which together with x - axis forms a container, such that the container contains the most water.
+int Math::maxArea(vector<int> &height)
+{
+	int start = 0;
+	int end = height.size() - 1;
+	int ans = INT_MIN;
+	while (start < end)
+	{
+		int area = min(height[end], height[start]) * (end - start);
+		ans = max(ans, area);
+		if (height[end] >= height[start])  // height[start] is shorter
+		{
+			start++;
+		}
+		else
+		{
+			end--;
+		}
+	}
+	return ans;
 }

@@ -9,7 +9,8 @@ class Strings
 {
 private:
 	string preProcess(string s);
-	string expandCenter(string s, int c1, int c2);
+	string expandCenter(string s, int c1, int c2); 
+	bool isMatch(const char *s, const char *p);
 public:
 	bool canPermutePalindrome(string s); // #266
 	vector<string> generatePossibleNextMoves(string s); // #293
@@ -25,4 +26,5 @@ public:
 	string longestPalindrome_Manachers(string s);  // #5
 	string convertZigZag(string s, int numRows);  // #6
 	int myAtoi(string str);  // #8
+	bool isMatch(string s, string p);  //#10
 };

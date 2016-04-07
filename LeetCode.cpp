@@ -106,6 +106,9 @@ void strings_test()
 	cout << s.longestPalindrome_DP2(str) << endl;
 	cout << s.convertZigZag("abcdefghijklmn", 3) << endl;
 	cout << s.myAtoi("  -2147483647") << endl;
+	str = "asadf";
+	string preg = ".*";
+	cout << s.isMatch(str, preg) << endl;
 }
 void divedeConquer_test()
 {

@@ -73,6 +73,7 @@ The following is classified according to its tag. For example,  [problem \#328][
 - \#204 int countPrimes_SoE(int n) // Sieve of Eratosthenes(埃氏筛)
 - \#7 int reverse(int x)
 - \#15 vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt; &num)
+- \#11 int maxArea(vector<int> &height)
 
 ##Stack
 
@@ -105,6 +106,7 @@ The following is classified according to its tag. For example,  [problem \#328][
 - \#5 string longestPalindrome_Manachers(string s)
 - \#6 string convertZigZag(string s, int numRows)
 - \#8 int myAtoi(string str)
+- \#10 bool isMatch(string s, string p)
 
 ##Trees
 
@@ -171,6 +173,63 @@ Or in English:
 1. [Longest palindromic substring part I][LPS-i]
 2. [Longest palindromic substring part II][LPS-ii]
 
+### \#11 Container With Most Water ###
+
+1. The widest container (using first and last line) is a good candidate, because of its width. Its water level is the height of the smaller one of first and last line.
+2. All other containers are less wide and thus would need a higher water level in order to hold more water.
+3. The smaller one of first and last line doesn't support a higher water level and can thus be safely removed from further consideration.
+
+For example, given height = [1, 2, 1, 2]
+
+first:
+
+```
+index: 0 1 2 3
+value: 1 3 1 2
+       ^     ^
+       i     j
+```
+
+area = min(1, 2) * (3 - 0) = 3
+curMax = 3
+(i) < (j), so i = i + 1 = 1
+
+second:
+
+```
+index: 0 1 2 3
+value: 1 3 1 2
+         ^   ^
+         i   j
+```
+
+area = min(3, 2) * (3 - 1) = 4
+curMax = 4
+(i) > (j), so j = j - 1 = 2
+
+
+third:
+
+```
+index: 0 1 2 3
+value: 1 3 1 2
+         ^ ^
+         i j
+```
+
+area = min(3, 2) * (2 - 1) = 2
+curMax = 4
+(i) < (j), so j = j - 1 = 1
+
+
+```
+index: 0 1 2 3
+value: 1 3 1 2
+         ^
+        i,j
+```
+
+i == j, then done.
 
 [tag-list]: #linked-list
 [tag-array]: #array

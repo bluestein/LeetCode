@@ -27,5 +27,6 @@ public:
 	int countPrimes_sqrt(int n); // #204
 	int countPrimes_SoE(int n); // #204 Sieve of Eratosthenes(∞£ œ…∏)
 	int reverse(int x);  // #7
+	int maxArea(vector<int> &height);  //#11
 };
 
