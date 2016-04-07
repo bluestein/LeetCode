@@ -181,8 +181,6 @@ Or in English:
 
 For example, given height = [1, 2, 1, 2]
 
-first:
-
 ```
 index: 0 1 2 3
 value: 1 3 1 2
@@ -191,10 +189,11 @@ value: 1 3 1 2
 ```
 
 area = min(1, 2) * (3 - 0) = 3
+
 curMax = 3
+
 (i) < (j), so i = i + 1 = 1
 
-second:
 
 ```
 index: 0 1 2 3
@@ -204,11 +203,11 @@ value: 1 3 1 2
 ```
 
 area = min(3, 2) * (3 - 1) = 4
+
 curMax = 4
+
 (i) > (j), so j = j - 1 = 2
 
-
-third:
 
 ```
 index: 0 1 2 3
@@ -218,7 +217,9 @@ value: 1 3 1 2
 ```
 
 area = min(3, 2) * (2 - 1) = 2
+
 curMax = 4
+
 (i) < (j), so j = j - 1 = 1
 
 
