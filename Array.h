@@ -48,6 +48,7 @@ public:
 	void moveZeroes(vector<int>& nums); // #283
 	int removeElement(arr& nums, int val); // #27
 	double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2); // #4
+	int threeSumClosest(vector<int>& nums, int target);  //#16
 private:
 	int find_kth(vector<int>::const_iterator a, int m, vector<int>::const_iterator b, int n, int k);
 };

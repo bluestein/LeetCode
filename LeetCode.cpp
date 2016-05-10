@@ -29,9 +29,9 @@ int main()
 {
 	//trees_test();
 	//divedeConquer_test(); 
-	strings_test();
+	//strings_test();
 	//math_test(); 
-	//array_test();
+	array_test();
 	//BSTIterator_test();
     return 0;
 }
@@ -109,6 +109,7 @@ void strings_test()
 	str = "asadf";
 	string preg = ".*";
 	cout << s.isMatch(str, preg) << endl;
+	cout << s.intToRoman(3899) << endl;
 }
 void divedeConquer_test()
 {
@@ -165,6 +166,8 @@ void array_test()
 	string words_arr[] = { "practice", "makes", "perfect", "coding", "makes" };
 	vector<string> words(words_arr, words_arr + 5);
 	cout << array.shortestDistance(words, "coding", "makes") << endl;
+	vector<int> numsFor3Sum = {-4, 1,-3, -1, 2, 1};
+	cout << array.threeSumClosest(numsFor3Sum, -2) << endl;
 }
 
 void math_test() 

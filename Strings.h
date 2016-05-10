@@ -27,4 +27,5 @@ public:
 	string convertZigZag(string s, int numRows);  // #6
 	int myAtoi(string str);  // #8
 	bool isMatch(string s, string p);  //#10
+	string intToRoman(int num);  //#12
 };

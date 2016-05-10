@@ -416,3 +416,42 @@ bool Strings::isMatch(const char *s, const char *p)
 	}
 
 }
+
+// #12: Given an integer, convert it to a roman numeral.
+//      Input is guaranteed to be within the range from 1 to 3999.
+// We know that:
+// 1-9:       I II III IV V VI VII VIII IX
+// 10-90:     X XX XXX XL L LX LXX LXXX XC
+// 100-900:   C CC CCC CD D DC DCC DCCC CM
+// 1000-3000: M MM MMM
+string Strings::intToRoman(int num)
+{
+	/*
+	string s[4][10] = {
+		{ "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" },
+		{ "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" },
+		{ "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" },
+		{ "","M", "MM", "MMM" }
+	};
+	string res;
+	res += s[3][num / 1000 % 10];
+	res += s[2][num / 100 % 10];
+	res += s[1][num / 10 % 10];
+	res += s[0][num % 10];
+	return res;
+	*/
+
+	// for speed;
+	char *s[4][10] = {
+		{ "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" },
+		{ "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" },
+		{ "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" },
+		{ "","M", "MM", "MMM" }
+	};
+	string res;
+	res.append(s[3][num / 1000 % 10]);
+	res.append(s[2][num / 100 % 10]);
+	res.append(s[1][num / 10 % 10]);
+	res.append(s[0][num % 10]);
+	return res;
+}

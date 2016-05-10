@@ -374,3 +374,39 @@ int Array::find_kth(vector<int>::const_iterator a, int m, vector<int>::const_ite
 	else
 		return a[ia - 1];
 }
+
+// #16: Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target.
+//      Return the sum of the three integers. You may assume that each input would have exactly one solution.
+// Use three pointers: i, j, k
+// like this:
+//   a1, ..., an
+//   |    |   |
+//   i    k   j
+int Array::threeSumClosest(vector<int>& nums, int target)
+{
+	int len = nums.size(), res = 0;
+	if (len < 3) return res;
+	sort(nums.begin(), nums.end());
+	int gap = INT_MAX;
+	for (int i = 0; i < len - 2; i++)
+	{
+		int k = i + 1, j = len - 1;
+		while (k < j)
+		{
+			int sum = nums[i] + nums[j] + nums[k];
+			int cur_gap = abs(sum - target);
+			if (0 == cur_gap)
+			{
+				return sum;
+			}
+			else if (cur_gap < gap)
+			{
+				gap = cur_gap;
+				res = sum;
+			}
+			if (sum > target) j--;
+			else k++;
+		}
+	}
+	return res;
+}
