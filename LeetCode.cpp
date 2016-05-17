@@ -60,9 +60,18 @@ void CLF_test()
 		++result;
 	}
 
+	const char* ret_lf_strchr = lf.strchr("abcbdabbbbbbabb", 'a');
+	if (ret_lf_strchr)
+		cout << (*ret_lf_strchr == '\0' ? "null terminator" : ret_lf_strchr)<< endl;
+
+
+	const char* ret_lf_strrchr = lf.strrchr("abcbdabbbbbbabb", 'a');
+	if (ret_lf_strrchr)
+		cout << (*ret_lf_strrchr == '\0' ? "null terminator" : ret_lf_strrchr) << endl;
+
 	char str_arr[50] = "Hello ";
 	char str_arr2[50] = "World!";
-	lf.strcat(str_arr, str_arr2);
+	lf.strncat(str_arr, str_arr2, 7);
 	lf.strcat(str_arr, " Goodbye World!");
 	puts(str_arr);
 
@@ -75,6 +84,24 @@ void CLF_test()
 	{
 		cout << n << endl;
 	}
+
+	const char* ret_strstr = lf.strstr("hi, Lu", ", L");
+	cout << (ret_strstr == nullptr ? "null" : ret_strstr) << endl;
+
+	const char* ret_lf_strpbrk = lf.strpbrk("Hi, Lu!", "abc");
+	const char* ret_std_strpbrk = std::strpbrk("Hi, Lu!", "abc");
+	cout << (ret_lf_strpbrk ? ret_lf_strpbrk : "null") << endl;
+	cout << (ret_std_strpbrk ? ret_std_strpbrk : "null") << endl;
+
+	size_t ret_lf_strspn = lf.strspn("Hi, Lu!", "abcihHLu");
+	size_t ret_std_strspn = std::strspn("Hi, Lu!", "abcihHLu");
+	cout << ret_lf_strspn << endl;
+	cout << ret_std_strspn << endl;
+
+	size_t ret_lf_strcspn = lf.strcspn("zxy32,,Hi, Lu!", "abcihHLu");
+	size_t ret_std_strcspn = std::strcspn("zxy32,,Hi, Lu!", "abcihHLu");
+	cout << ret_lf_strcspn << endl;
+	cout << ret_std_strcspn << endl;
 }
 
 void trees_test()
