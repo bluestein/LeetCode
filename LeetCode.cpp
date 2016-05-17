@@ -12,6 +12,7 @@
 #include "BSTIterator.h"
 #include "Strings.h"
 #include "Trees.h"
+#include "LibraryFunctions.h"
 #include <iostream>
 using namespace std;
 
@@ -24,16 +25,56 @@ void queueByStack_test();
 void list_test();
 void array_test();
 void math_test();
-void test();
+void test(); 
+void CLF_test();
 int main()
 {
+	CLF_test();
 	//trees_test();
 	//divedeConquer_test(); 
 	//strings_test();
 	//math_test(); 
-	array_test();
+	//array_test();
 	//BSTIterator_test();
     return 0;
+}
+
+void CLF_test()
+{
+	LibraryFunctions lf;
+	char src[] = "hi,";
+	char dest[6] = "abcde"; // no null terminator
+	int count = 2;
+	lf.strncpy(dest, src, count);
+	cout << dest << endl;
+	int n = 6;
+	while (n-- != 0) cout << dest[n] << endl;
+
+	const char *str = "Try not. Do, or do not. There is no try.";
+	char target = 'T';
+	const char *result = str;
+	while ((result = lf.strchr(result, target)) != NULL) {
+		std::cout << "Found '" << target
+			<< "' starting at '" << result << "'\n";
+		// Increment result, otherwise we'll find target at the same location
+		++result;
+	}
+
+	char str_arr[50] = "Hello ";
+	char str_arr2[50] = "World!";
+	lf.strcat(str_arr, str_arr2);
+	lf.strcat(str_arr, " Goodbye World!");
+	puts(str_arr);
+
+	char s[] = "memmove can be very useful......";
+	int nums[] = { 1,2,3,4,5,6,7 };
+	lf.memmove(s, s + 3, 11);
+	lf.memmove(nums + 2, nums + 1, 3);
+	puts(s);
+	for (auto n : nums)
+	{
+		cout << n << endl;
+	}
 }
 
 void trees_test()

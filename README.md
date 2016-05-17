@@ -51,6 +51,7 @@ The following is classified according to its tag. For example,  [problem \#328][
 - \#62 int uniquePaths(int m, int n)
 - \#63 int uniquePathsWithObstacles(vector&lt;vector&lt;int&gt;&gt;& obstacleGrid)
 - \#4 double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2)
+- \#16 int threeSumClosest(vector<int>& nums, int target)
 
 
 ##Math
@@ -107,6 +108,7 @@ The following is classified according to its tag. For example,  [problem \#328][
 - \#6 string convertZigZag(string s, int numRows)
 - \#8 int myAtoi(string str)
 - \#10 bool isMatch(string s, string p)
+- \#12 string intToRoman(int num)
 
 ##Trees
 
