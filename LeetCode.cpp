@@ -85,8 +85,9 @@ void CLF_test()
 		cout << n << endl;
 	}
 
-	const char* ret_strstr = lf.strstr("hi, Lu", ", L");
+	const char* ret_strstr = lf.strstr("hi, Lu", "");
 	cout << (ret_strstr == nullptr ? "null" : ret_strstr) << endl;
+	cout << strstr("hi, Lu", "") << endl;
 
 	const char* ret_lf_strpbrk = lf.strpbrk("Hi, Lu!", "abc");
 	const char* ret_std_strpbrk = std::strpbrk("Hi, Lu!", "abc");
@@ -98,10 +99,16 @@ void CLF_test()
 	cout << ret_lf_strspn << endl;
 	cout << ret_std_strspn << endl;
 
-	size_t ret_lf_strcspn = lf.strcspn("zxy32,,Hi, Lu!", "abcihHLu");
-	size_t ret_std_strcspn = std::strcspn("zxy32,,Hi, Lu!", "abcihHLu");
+	size_t ret_lf_strcspn = lf.strcspn("zxy32,,Hi, Lu!", "abcihHLu23zyx");
+	size_t ret_std_strcspn = std::strcspn("zxy32,,Hi, Lu!", "abcihHLu23zyx");
 	cout << ret_lf_strcspn << endl;
 	cout << ret_std_strcspn << endl;
+
+	size_t ret_lf_memcmp = lf.memcmp("zxy32,,Hi, Lu!", "zxy", 5);
+	size_t ret_std_memcmp = std::memcmp("zxy32,,Hi, Lu!", "zxy", 5);
+	cout << ret_lf_memcmp << endl;
+	cout << ret_std_memcmp << endl;
+
 }
 
 void trees_test()
