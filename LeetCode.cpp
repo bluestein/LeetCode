@@ -85,9 +85,9 @@ void CLF_test()
 		cout << n << endl;
 	}
 
-	const char* ret_strstr = lf.strstr("hi, Lu", "");
+	const char* ret_strstr = lf.strstr("hi, Lu Liu", ", L");
 	cout << (ret_strstr == nullptr ? "null" : ret_strstr) << endl;
-	cout << strstr("hi, Lu", "") << endl;
+	cout << strstr("hi, Lu Liu", ", L") << endl;
 
 	const char* ret_lf_strpbrk = lf.strpbrk("Hi, Lu!", "abc");
 	const char* ret_std_strpbrk = std::strpbrk("Hi, Lu!", "abc");

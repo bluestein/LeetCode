@@ -155,11 +155,20 @@ Positive value if lhs appears after rhs in lexicographical order.
 int LibraryFunctions::strcmp(const char* lhs, const char* rhs)
 {
 	if (lhs == nullptr || rhs == nullptr) throw "Undefined";
-	while (*lhs == *rhs && *rhs)
+	int ret = 0;
+	while (*rhs && !(ret = *(unsigned char*)lhs - *(unsigned char*)rhs))
 	{
 		++lhs, ++rhs;
 	}
-	return(*(unsigned char*)lhs - *(unsigned char*)rhs);
+	if (ret < 0)
+	{
+		ret = -1;
+	}
+	else if (ret > 0)
+	{
+		ret = 1;
+	}
+	return(ret);
 }
 
 /*
@@ -180,7 +189,7 @@ int LibraryFunctions::strncmp(const char* lhs, const char* rhs, size_t count)
 {
 	if (lhs == nullptr || rhs == nullptr) throw "Undefined";
 	int ret = 0;
-	while (count-- && !(ret = *(unsigned char*)lhs - *(unsigned char*)rhs))
+	while (count-- && *rhs && !(ret = *(unsigned char*)lhs - *(unsigned char*)rhs))
 	{
 		++lhs, ++rhs;
 	}
@@ -295,7 +304,7 @@ Return value
 Pointer to the first character of the found substring in str, or NULL if no such character is found.
 If target points to an empty string, str is returned.
 */
-const char* LibraryFunctions::strstr(const char* str, const char* target)
+const char* LibraryFunctions::strstr_(const char* str, const char* target)
 {
 	if (nullptr == str || nullptr == target) throw "Undefined";
 	const char* ret = str;
@@ -305,6 +314,27 @@ const char* LibraryFunctions::strstr(const char* str, const char* target)
 		if (strncmp(str, target, len) == 0) return str;
 	}
 	return ret;
+}
+
+const char* LibraryFunctions::strstr(const char* str, const char* target)
+{
+	if (nullptr == str || nullptr == target) throw "Undefined";
+	for (; *str; str++)
+	{
+		const char *s, *t;
+		s = str, t = target;
+		// Matching process
+		while (*s && *t && (*s == *t))
+		{
+			s++, t++;
+		}
+		// Found match
+		if (*t == '\0')
+		{
+			return str;
+		}
+	}
+	return nullptr;
 }
 
 /*

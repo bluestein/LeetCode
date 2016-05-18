@@ -16,6 +16,7 @@ public:
 	//Searching
 	const char* strchr(const char* str, int ch);
 	const char* strrchr(const char* str, int ch);
+	const char* strstr_(const char* str, const char* target);
 	const char* strstr(const char* str, const char* target);
 	const char* strpbrk(const char* dest, const char* breakset); 
 	size_t      strspn(const char* dest, const char* accept);
